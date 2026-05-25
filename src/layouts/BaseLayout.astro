@@ -1,6 +1,7 @@
 ---
-import Header from "@/components/Header.astro"
 import Footer from "@/components/Footer.astro"
+import SidebarNavigation from "@/components/SidebarNavigation.astro"
+import MobileNavigationDrawer from "@/components/MobileNavigationDrawer.astro"
 import { defaultSEO, organization, localBusiness } from "@data/seo"
 import { getBreadcrumbs } from "@data/navigation"
 
@@ -103,13 +104,72 @@ const breadcrumbs = explicitBreadcrumbs ?? getBreadcrumbs(canonical)
     )}
   </head>
   <body>
-    <Header />
-    <main>
-      <slot />
-    </main>
-    <Footer />
+    <div class="app-shell">
+      <SidebarNavigation />
+
+      <div class="app-shell__main">
+        <header class="mobile-topbar">
+          <a href="/" class="mobile-topbar__brand" aria-label="Inicio Moreres">
+            <img src="/assets/logos/moreres-logo-morera-letras.png" alt="Moreres" width="32" height="32" />
+            <span>Moreres</span>
+          </a>
+          <MobileNavigationDrawer />
+        </header>
+
+        <main>
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    </div>
   </body>
 </html>
+
+<style>
+  .app-shell {
+    min-height: 100vh;
+  }
+
+  .app-shell__main {
+    min-width: 0;
+    background: var(--surface-white);
+  }
+
+  .mobile-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 45;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-3);
+    padding: 0 var(--spacing-5);
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--color-neutral-100);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .mobile-topbar__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    color: var(--text-primary);
+    font-weight: var(--font-semibold);
+  }
+
+  @media (min-width: 1024px) {
+    .app-shell {
+      display: grid;
+      grid-template-columns: var(--sidebar-width, 280px) 1fr;
+    }
+
+    .mobile-topbar {
+      display: none;
+    }
+  }
+</style>
 
 <script>
   const observer = new IntersectionObserver(

@@ -1,0 +1,74 @@
+---
+import type { NavItem } from "@data/navigation"
+
+export interface Props {
+  item: NavItem
+  currentPath: string
+  variant?: "sidebar" | "drawer"
+  index?: number
+}
+
+const { item, currentPath, variant = "sidebar", index = 0 } = Astro.props
+
+const isCurrent = item.href === "/" ? currentPath === "/" : currentPath.startsWith(item.href)
+const childActive = item.children?.some((child) => (child.href === "/" ? currentPath === "/" : currentPath.startsWith(child.href))) ?? false
+const hasChildren = Boolean(item.children?.length)
+const openByDefault = isCurrent || childActive
+const submenuId = `submenu-${variant}-${index}-${item.label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
+---
+
+<li class:list={["nav-tree__item", hasChildren && "nav-tree__item--parent", openByDefault && "is-open"]}>
+  {hasChildren ? (
+    <div class="nav-tree__row">
+      <a
+        href={item.href}
+        class:list={["nav-tree__link", isCurrent && "is-active", item.isHighlighted && "is-highlighted"]}
+        aria-current={isCurrent ? "page" : undefined}
+        data-drawer-link={variant === "drawer" ? "true" : undefined}
+      >
+        <span>{item.label}</span>
+      </a>
+      <button
+        class="nav-tree__toggle"
+        type="button"
+        aria-label={`Mostrar submenú de ${item.label}`}
+        aria-controls={submenuId}
+        aria-expanded={openByDefault ? "true" : "false"}
+        data-nav-toggle
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+      </button>
+    </div>
+  ) : (
+    <a
+      href={item.href}
+      class:list={["nav-tree__link", isCurrent && "is-active", item.isHighlighted && "is-highlighted"]}
+      aria-current={isCurrent ? "page" : undefined}
+      data-drawer-link={variant === "drawer" ? "true" : undefined}
+    >
+      <span>{item.label}</span>
+    </a>
+  )}
+
+  {hasChildren && (
+    <div class="nav-tree__subwrap" id={submenuId}>
+      <ul class="nav-tree__sublist">
+        {item.children?.map((child) => {
+          const childIsCurrent = child.href === "/" ? currentPath === "/" : currentPath.startsWith(child.href)
+          return (
+            <li class="nav-tree__subitem">
+              <a
+                href={child.href}
+                class:list={["nav-tree__sublink", childIsCurrent && "is-active"]}
+                aria-current={childIsCurrent ? "page" : undefined}
+                data-drawer-link={variant === "drawer" ? "true" : undefined}
+              >
+                {child.label}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )}
+</li>

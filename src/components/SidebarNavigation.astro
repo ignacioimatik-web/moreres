@@ -1,0 +1,31 @@
+---
+import { navigation, footerLinks } from "@data/navigation"
+import NavigationItem from "@/components/NavigationItem.astro"
+
+const currentPath = Astro.url.pathname
+---
+
+<aside class="sidebar" aria-label="Navegación lateral">
+  <div class="sidebar__brand">
+    <a href="/" class="sidebar__logo" aria-label="Inicio Moreres">
+      <img src="/assets/logos/moreres-logo-morera-letras.png" alt="Moreres" width="40" height="40" />
+      <div>
+        <strong>Moreres</strong>
+        <span>Castellón · Desde 1971</span>
+      </div>
+    </a>
+  </div>
+
+  <nav class="sidebar__nav" aria-label="Secciones principales">
+    <ul class="nav-tree">
+      {navigation.map((item, i) => <NavigationItem item={item} currentPath={currentPath} variant="sidebar" index={i} />)}
+    </ul>
+  </nav>
+
+  <footer class="sidebar__footer">
+    <a href="/contacto">Contacto</a>
+    {footerLinks.legal.items.slice(0, 2).map((item) => (
+      <a href={item.href}>{item.label}</a>
+    ))}
+  </footer>
+</aside>

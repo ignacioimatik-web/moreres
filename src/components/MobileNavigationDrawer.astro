@@ -1,0 +1,64 @@
+---
+import { navigation } from "@data/navigation"
+import NavigationItem from "@/components/NavigationItem.astro"
+
+const currentPath = Astro.url.pathname
+---
+
+<button class="mobile-topbar__trigger" type="button" aria-label="Abrir menú" data-drawer-open>
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+</button>
+
+<div class="drawer" data-drawer>
+  <button class="drawer__overlay" type="button" aria-label="Cerrar menú" data-drawer-close></button>
+
+  <aside class="drawer__panel" role="navigation" aria-label="Navegación móvil">
+    <header class="drawer__header">
+      <a href="/" class="drawer__logo" data-drawer-link>
+        <img src="/assets/logos/moreres-logo-morera-letras.png" alt="Moreres" width="36" height="36" />
+        <span>Moreres</span>
+      </a>
+      <button type="button" class="drawer__close" aria-label="Cerrar menú" data-drawer-close>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+    </header>
+
+    <div class="drawer__content">
+      <ul class="nav-tree nav-tree--drawer">
+        {navigation.map((item, i) => <NavigationItem item={item} currentPath={currentPath} variant="drawer" index={i} />)}
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<script>
+  const drawer = document.querySelector("[data-drawer]")
+  if (drawer) {
+    const openButtons = document.querySelectorAll("[data-drawer-open]")
+    const closeButtons = drawer.querySelectorAll("[data-drawer-close]")
+    const closeOnLinks = drawer.querySelectorAll("[data-drawer-link]")
+    const html = document.documentElement
+
+    const setDrawer = (open) => {
+      drawer.classList.toggle("is-open", open)
+      html.classList.toggle("drawer-open", open)
+    }
+
+    openButtons.forEach((btn) => btn.addEventListener("click", () => setDrawer(true)))
+    closeButtons.forEach((btn) => btn.addEventListener("click", () => setDrawer(false)))
+    closeOnLinks.forEach((link) => link.addEventListener("click", () => setDrawer(false)))
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setDrawer(false)
+    })
+  }
+
+  document.querySelectorAll("[data-nav-toggle]").forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      const item = toggle.closest(".nav-tree__item")
+      if (!item) return
+      const isOpen = item.classList.toggle("is-open")
+      toggle.setAttribute("aria-expanded", String(isOpen))
+    })
+  })
+</script>
