@@ -1,0 +1,46 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Calendario | Asociación Moreres",
+  description: "Calendario de actividades familiares, formativas, deportivas y solidarias."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/calendario")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Calendario" subtitle="Actividades del curso" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Planificación" title="Calendario de actividades">
+    <div class="content-block">
+      <p class="content-block__text">
+        La Asociación Moreres lleva a cabo una serie de actividades familiares, formativas,
+        deportivas, de solidaridad y ocio para los jóvenes y sus familias.
+      </p>
+      <p class="content-block__text">
+        Próximamente publicaremos el calendario completo de actividades del curso. Para más
+        información, no dudes en contactar con nosotros.
+      </p>
+      <div style="margin-top: var(--spacing-6)">
+        <a href="/contacto" class="btn btn--primary">Contactar</a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-4);
+  }
+</style>

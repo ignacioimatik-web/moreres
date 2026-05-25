@@ -1,0 +1,49 @@
+---
+import LegalLayout from "@/layouts/LegalLayout.astro"
+
+const route = {
+  title: "Protección de datos | Asociación Moreres",
+  description: "Información básica sobre protección de datos personales de Moreres Club Deportivo."
+}
+---
+
+<LegalLayout title={route.title} description={route.description}>
+  <h1>Protección de datos</h1>
+  <h2>Información básica sobre protección de datos</h2>
+
+  <table class="legal-table">
+    <tr><td><strong>Responsable</strong></td><td>MORERES CLUB DEPORTIVO</td></tr>
+    <tr><td><strong>Finalidad</strong></td><td>Atender sus consultas y/o solicitudes.</td></tr>
+    <tr><td><strong>Derechos</strong></td><td>Acceder, rectificar y suprimir los datos, así como otros derechos, como se explica en la información adicional.</td></tr>
+    <tr><td><strong>Información adicional</strong></td><td>Puede consultar la información adicional y detallada sobre Protección de Datos en nuestra página web, apartado <a href="/legal/politica-de-privacidad">Política de Privacidad</a>.</td></tr>
+  </table>
+
+  <p>De conformidad con lo establecido en la normativa vigente y aplicable de protección de datos de carácter personal, mediante el envío del formulario de recogida de datos, el usuario acepta la presente información básica sobre protección de datos y presta su consentimiento para el tratamiento de sus datos personales conforme a las finalidades descritas.</p>
+
+  <p>Para más información sobre el tratamiento de sus datos personales, consulte nuestra <a href="/legal/politica-de-privacidad">Política de Privacidad</a> completa, donde encontrará información detallada sobre los derechos que le asisten y cómo ejercerlos.</p>
+</LegalLayout>
+
+<style>
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--spacing-4) 0;
+  }
+
+  .legal-table td {
+    padding: var(--spacing-3) var(--spacing-4);
+    border: 1px solid var(--color-neutral-200);
+    font-size: var(--text-sm);
+    vertical-align: top;
+  }
+
+  .legal-table td:first-child {
+    white-space: nowrap;
+    background: var(--surface-light);
+    font-weight: var(--font-semibold);
+  }
+
+  .legal-table td:last-child {
+    width: 100%;
+  }
+</style>

@@ -1,0 +1,102 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+import DocBlock from "@/components/DocBlock.astro"
+
+const route = {
+  title: "The Mark | Asociación Moreres",
+  description: "Programa de desarrollo personal para jóvenes a través de mentorías."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/the-mark")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="The Mark" subtitle="Programa de desarrollo personal para jóvenes" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Programa formativo" title="The Mark Program">
+    <div class="content-block">
+      <p class="content-block__text">
+        El Club Moreres, en su empeño por ayudar en la formación de las familias, concretamente en
+        sus hijos, pretende desarrollar un curso de desarrollo personal para jóvenes a través de
+        mentorías. Dirigido a alumnos de 3º y 4º de ESO.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Precios" title="Tarifas">
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-card__title">Socio</h3>
+        <div class="pricing-card__price">95€</div>
+        <p class="pricing-card__text">Precio especial para socios de Moreres</p>
+      </div>
+      <div class="pricing-card">
+        <h3 class="pricing-card__title">No socio</h3>
+        <div class="pricing-card__price">150€</div>
+        <p class="pricing-card__text">Tarifa general</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section tagline="Documentación" title="Más información">
+    <DocBlock name="Presentación The Mark 2022" href="/assets/documents/alumnos-presentacion-themark2022.pdf" type="pdf" size="2 MB" />
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .pricing-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .pricing-card {
+    padding: var(--spacing-8);
+    background: var(--surface-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-neutral-100);
+    text-align: center;
+  }
+
+  .pricing-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .pricing-card__price {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary-500);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .pricing-card__text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+  }
+</style>

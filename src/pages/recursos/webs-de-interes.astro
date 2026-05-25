@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import ExtLink from "@/components/ExtLink.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Webs de interés | Asociación Moreres",
+  description: "Recursos recomendados: libros, películas, afectividad, tecnología y más."
+}
+const breadcrumbs = getBreadcrumbs("/recursos/webs-de-interes")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Webs de interés" subtitle="Recursos para la formación de los más jóvenes" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Recursos" title="Ayuda para las familias">
+    <div class="content-block">
+      <p class="content-block__text">
+        Esta página supone una ayuda para las familias con algunas páginas web de interés sobre
+        lecturas, películas y demás contenidos que son realmente interesantes para la formación
+        de los más jóvenes.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Recomendaciones" title="Enlaces de interés">
+    <div class="links-grid">
+      <ExtLink label="The Chosen — Una mirada a la vida de Jesús" href="https://watch.thechosen.es" />
+      <ExtLink label="Aceprensa — Libros para jóvenes" href="https://librosparajovenes.aceprensa.com/" />
+      <ExtLink label="Delibris — Valoración de libros" href="https://www.delibris.org/" />
+      <ExtLink label="Almudi — Listado de películas" href="http://www.almudi.org/listado-peliculas" />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .links-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+</style>

@@ -1,0 +1,78 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import DocBlock from "@/components/DocBlock.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Temporada 2022-2023 | Escuela Deportiva Moreres",
+  description: "Revistas mensuales de la temporada 2022-2023."
+}
+const breadcrumbs = getBreadcrumbs("/escuela-deportiva/temporadas/2022-2023")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Temporada 2022-2023" subtitle="C.D. Moreres" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Temporada" title="Información de la temporada 2022-2023">
+    <div class="content-block">
+      <p class="content-block__text">
+        En el siguiente PDF se encuentra toda la información acerca de la temporada 2022-2023.
+      </p>
+    </div>
+  </Section>
+
+  <Section tagline="Documentos" title="Revistas y recursos" variant="light">
+    <div style="display: grid; gap: var(--spacing-4); max-width: 480px;">
+      <DocBlock
+        name="Información temporada 2022-2023"
+        href="/assets/documents/c.d._moreres_-_temporada_2022-2023.pdf"
+        type="pdf"
+        size="2 MB"
+      />
+      <DocBlock
+        name="Revista Enero 2022"
+        href="/assets/documents/revista_enero_2022.pdf"
+        type="pdf"
+        size="2 MB"
+      />
+      <DocBlock
+        name="Revista Febrero 2022"
+        href="/assets/documents/revista_febrero_2022.pdf"
+        type="pdf"
+        size="2 MB"
+      />
+      <DocBlock
+        name="Revista Marzo 2022"
+        href="/assets/documents/revista_marzo_2022.pdf"
+        type="pdf"
+        size="2 MB"
+      />
+      <DocBlock
+        name="Revista Abril 2022"
+        href="/assets/documents/revista_abril_2022.pdf"
+        type="pdf"
+        size="2 MB"
+      />
+      <DocBlock
+        name="Revista Mayo-Junio 2022"
+        href="/assets/documents/revista_mayo-junio_2022.pdf"
+        type="pdf"
+        size="2 MB"
+      />
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+</style>

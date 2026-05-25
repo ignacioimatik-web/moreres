@@ -1,0 +1,96 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Card from "@/components/Card.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Actividades | Asociación Moreres",
+  description: "Actividades ordinarias, planes familiares, campamentos y convivencias para todas las edades."
+}
+const breadcrumbs = getBreadcrumbs("/actividades")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader
+    title="Actividades"
+    subtitle="Actividades formativas, familiares y deportivas para jóvenes desde Primaria hasta Universidad"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <Section tagline="Nuestras actividades" title="Una oferta completa para cada etapa">
+    <div class="cards-grid animate-stagger">
+      <Card
+        image={{ src: "/assets/images/estudio-3_orig.jpg", alt: "Estudio Moreres" }}
+        title="Estudio"
+        text="De lunes a jueves, los socios de 5º Primaria a 2º Bachillerato cuentan con salas de estudio para lograr un rendimiento satisfactorio en sus labores académicas."
+        href="/actividades/estudio"
+      />
+      <Card
+        image={{ src: "/assets/images/rafa-lafuente-1_orig.jpg", alt: "Actividades formativas" }}
+        title="Actividades formativas"
+        text="Charlas de formación humana y cristiana para todas las edades, programas The Link (1º-2º ESO) y The Mark (3º-4º ESO)."
+        href="/actividades/formativas"
+      />
+      <Card
+        image={{ src: "/assets/images/the-mark_orig.jpg", alt: "The Mark" }}
+        title="The Mark"
+        text="Programa de desarrollo personal para jóvenes a través de mentorías. Un curso con sesiones mensuales para formar el carácter."
+        href="/actividades/the-mark"
+      />
+      <Card
+        image={{ src: "/assets/images/convivencia-familiar-1_orig.jpg", alt: "Familias" }}
+        title="Familias"
+        text="Planes familiares periódicos, formación para padres y programa de formación en virtudes trabajado de manera conjunta."
+        href="/actividades/familias"
+      />
+      <Card
+        image={{ src: "/assets/images/f-tima-1_orig.jpg", alt: "MIF Fátima" }}
+        title="Convivencias"
+        text="UNIV Roma, MIF Fátima, Supercopa Junior, Camino de Santiago, Manager e Interclubes. Las actividades que más apasionan a nuestros jóvenes."
+        href="/actividades/convivencias"
+      />
+      <Card
+        image={{ src: "/assets/images/campamento-1_orig.jpg", alt: "Campamentos" }}
+        title="Campamentos"
+        text="Campamentos de Pascua y verano con temáticas atractivas. El II Moreres Football Camp y campamentos para Primaria."
+        href="/actividades/campamentos"
+      />
+    </div>
+  </Section>
+
+  <Section tagline="Solidaridad" title="Aprender a servir" variant="light" center>
+    <div class="content-block">
+      <p class="content-block__text">
+        Las actividades solidarias tienen un papel importante en la formación de los jóvenes.
+        Visitas a los más necesitados, donación de alimentos y acompañamiento a residencias de
+        ancianos. Todo ello hace que los socios aprendan con naturalidad a estar pendientes de
+        los demás.
+      </p>
+      <div class="content-block__cta">
+        <a href="/actividades/solidaridad" class="btn btn--primary">Conoce nuestras actividades solidarias</a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-8);
+  }
+
+  .content-block__cta {
+    display: flex;
+    justify-content: center;
+  }
+</style>

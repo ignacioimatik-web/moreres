@@ -1,0 +1,158 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Proyecto educativo | Asociación Moreres",
+  description: "Nuestra propuesta formativa: formación humana, académica, espiritual y coaching personal."
+}
+const breadcrumbs = getBreadcrumbs("/quienes-somos/proyecto-educativo")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader
+    title="Proyecto educativo"
+    subtitle="Formación integral para un desarrollo pleno"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <Section tagline="Nuestra propuesta" title="Acompañar en las primeras decisiones" center>
+    <div class="content-block">
+      <p class="content-block__lead">
+        La juventud es la época de las primeras decisiones. Por eso desde el Club procuramos acompañar
+        y ofrecer las herramientas necesarias a cada socio para que, de entre todas las que puede tomar,
+        elija las mejores.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light">
+    <div class="pillars">
+      <article class="pillar">
+        <div class="pillar__number">01</div>
+        <h3 class="pillar__title">Formación humana</h3>
+        <p class="pillar__text">
+          El crecimiento exterior y el desarrollo interior deben ir de la mano para que el resultado en
+          cada persona sea armónico y plenamente humano y libre. Formamos en un programa de virtudes
+          para favorecer un desarrollo pleno: sinceridad, lealtad, fortaleza, mansedumbre, paciencia,
+          generosidad&hellip;
+        </p>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar__number">02</div>
+        <h3 class="pillar__title">Formación académica</h3>
+        <p class="pillar__text">
+          El desarrollo de las habilidades de un buen estudiante no se improvisa. Contamos con un programa
+          de acompañamiento en el estudio y de enriquecimiento cultural a través de la literatura, el cine,
+          conferencias, o visitas a ciudades de toda la geografía española.
+        </p>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar__number">03</div>
+        <h3 class="pillar__title">Formación espiritual</h3>
+        <p class="pillar__text">
+          Aspirar a los bienes más altos es clave para el desarrollo pleno de nuestra personalidad.
+          Se ofrecen charlas y conversaciones semanales para mejorar la dimensión espiritual de cada socio.
+        </p>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar__number">04</div>
+        <h3 class="pillar__title">Coaching personal</h3>
+        <p class="pillar__text">
+          El verdadero secreto del cambio y la mejora personal se encuentra en la buena actitud y la
+          concreción en pequeñas obras. Cada coach favorece ilusiones y deseos nobles y acompaña en su
+          concreción y cumplimiento.
+        </p>
+      </article>
+    </div>
+  </Section>
+
+  <Section tagline="Programas" title="The Link y The Mark">
+    <div class="content-block">
+      <p class="content-block__text">
+        Para 1º y 2º de ESO contamos con un programa de formación afectivo-sexual llamado
+        <strong>The Link</strong>. Para 3º y 4º de ESO contamos con un programa de formación en el
+        carácter llamado <strong>The Mark</strong>. Estos programas se realizan durante el curso con
+        una sesión al mes llevada a cabo por un ponente y la posterior mentoría para establecer
+        conclusiones que ayuden en el crecimiento de los adolescentes.
+      </p>
+    </div>
+  </Section>
+
+  <Section tagline="Padres" title="Formación para padres" variant="light">
+    <div class="content-block">
+      <p class="content-block__text">
+        Todo esto no sería posible sin la colaboración estrecha de unos padres preocupados por la
+        formación y el buen desarrollo de sus hijos. Desde el Club se ofrece formación humana y
+        cristiana a todos los padres que lo deseen.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__lead {
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+
+  @media (min-width: 768px) {
+    .pillars {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .pillar {
+    padding: var(--spacing-6);
+    background: var(--surface-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-neutral-100);
+  }
+
+  .pillar__number {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-extrabold);
+    color: var(--color-primary-200);
+    line-height: 1;
+    margin-bottom: var(--spacing-2);
+  }
+
+  .pillar__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--spacing-3);
+    color: var(--text-primary);
+  }
+
+  .pillar__text {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+</style>

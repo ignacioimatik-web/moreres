@@ -1,0 +1,319 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import Section from "@/components/Section.astro"
+import Card from "@/components/Card.astro"
+import Hero from "@/components/Hero.astro"
+import { getBreadcrumbs } from "@data/navigation"
+import { pages } from "@data/seo"
+
+const route = pages["/escuela-deportiva"]
+const breadcrumbs = getBreadcrumbs("/escuela-deportiva")
+const goals = [
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    title: "Formación integral",
+    text: "Formar personas a través del deporte, trabajando virtudes humanas que sirvan para el crecimiento personal."
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M3 21v-2a7 7 0 0 1 7-7h4a7 7 0 0 1 7 7v2"/></svg>',
+    title: "Trabajo en equipo",
+    text: "Fomentar el compañerismo, la amistad y el sentido de pertenencia al Club como una gran familia."
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
+    title: "Excelencia deportiva",
+    text: "Mejorar temporada tras temporada, compitiendo con respeto y haciéndonos un nombre en la provincia."
+  },
+  {
+    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" y2="4"/></svg>',
+    title: "Valores y virtudes",
+    text: "El fútbol como herramienta para trabajar el orden, la obediencia, el esfuerzo, el compromiso y la fortaleza."
+  }
+]
+const timeline = [
+  {
+    year: "1996",
+    title: "Fundación",
+    text: "La Escuela Deportiva de fútbol surge en 1996 como un proyecto deportivo y educativo para niños y jóvenes de Castellón."
+  },
+  {
+    year: "2015",
+    title: "Relanzamiento",
+    text: "En 2015 se relanza el proyecto con equipos federados, emigrando del fútbol sala al fútbol y sentando las bases del actual C.D. Moreres."
+  },
+  {
+    year: "Hoy",
+    title: "11 equipos · 185+ jugadores",
+    text: "Temporada tras temporada seguimos creciendo. En 2024-2025 alcanzamos los 11 equipos federados y más de 185 jugadores, estrenando escudo y marca deportiva S10."
+  }
+]
+---
+
+<BaseLayout title={route.title} description={route.description} ogImage={route.ogImage}>
+  <Hero
+    title="Escuela Deportiva"
+    subtitle="C.D. Moreres — Formando personas a través del deporte desde 1996"
+    tagline="CD Moreres"
+    backgroundImage="/assets/gallery/campeones_orig.jpeg"
+    ctaPrimary={{ label: "Inscripción", href: "/escuela-deportiva/inscripcion" }}
+    ctaSecondary={{ label: "Ver temporadas", href: "/escuela-deportiva/temporadas" }}
+  />
+
+  <Section variant="primary" center>
+    <div class="stats stats--light">
+      <div class="stat">
+        <div class="stat__number">1996</div>
+        <div class="stat__label">Fundación</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">2015</div>
+        <div class="stat__label">Relanzamiento</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">11</div>
+        <div class="stat__label">Equipos</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">185+</div>
+        <div class="stat__label">Jugadores</div>
+      </div>
+    </div>
+  </Section>
+
+  <Section tagline="Nuestros pilares" title="Objetivos de la Escuela Deportiva" center>
+    <div class="goals-grid">
+      {goals.map((g) => (
+        <div class="goal-card">
+          <div class="goal-card__icon" set:html={g.icon} />
+          <h3 class="goal-card__title">{g.title}</h3>
+          <p class="goal-card__text">{g.text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Nuestra filosofía" title="Formar personas a través del deporte">
+    <div class="split-block">
+      <div class="split-block__content">
+        <p class="split-block__lead">
+          El C.D. Moreres tiene el objetivo de formar personas a través del deporte. El fútbol es una herramienta muy eficaz para trabajar una serie de valores y virtudes humanas que les sirva para su crecimiento personal.
+        </p>
+        <p class="split-block__text">
+          La Escuela Deportiva de fútbol surgió en 1996 y tuvo su relanzamiento en 2015 con un nuevo proyecto a través de la creación de equipos federados que fueron emigrando de fútbol sala a fútbol.
+        </p>
+        <p class="split-block__text">
+          A través del trabajo temporada tras temporada, el Club busca mejorar y superarse cada año tratando de ser reconocido haciéndose un nombre entre los clubes de la provincia de Castellón.
+        </p>
+        <a href="/escuela-deportiva/presentacion" class="btn btn--primary">Saber más</a>
+      </div>
+      <div class="split-block__image">
+        <img src="/assets/gallery/acuerdo-s10_orig.png" alt="C.D. Moreres Escuela Deportiva" loading="lazy" />
+      </div>
+    </div>
+  </Section>
+
+  <Section tagline="Historia" title="Nuestra trayectoria" center>
+    <div class="timeline-wrapper">
+      <div class="timeline">
+        {timeline.map((item) => (
+          <div class="timeline__item">
+            <div class="timeline__year">{item.year}</div>
+            <h3 class="timeline__title">{item.title}</h3>
+            <p class="timeline__text">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Acceso directo" title="Explora la Escuela Deportiva" center>
+    <div class="cards-grid cards-grid--3">
+      <Card
+        image={{ src: "/assets/images/10-aniversario-escudo.png", alt: "Plan de formación" }}
+        title="Plan de formación"
+        text="Plan anual con fichas mensuales de virtudes: orden, obediencia, compañerismo, esfuerzo, compromiso, fortaleza y respeto."
+        href="/escuela-deportiva/plan-de-formacion"
+      />
+      <Card
+        image={{ src: "/assets/gallery/cartel-temporada-2025-2026_orig.png", alt: "Temporadas" }}
+        title="Temporadas"
+        text="Histórico completo de temporadas con revistas mensuales descargables y logros deportivos."
+        href="/escuela-deportiva/temporadas"
+      />
+      <Card
+        image={{ src: "/assets/images/supercopa-2023_orig.jpeg", alt: "Inscripción" }}
+        title="Inscripción"
+        text="Preinscripción para nuevas altas y jugadores que continúan. Infórmate de los plazos y requisitos."
+        href="/escuela-deportiva/inscripcion"
+      />
+    </div>
+  </Section>
+
+  <Section variant="dark" center>
+    <div class="cta-section">
+      <h2 class="cta-section__title">¿Quieres formar parte?</h2>
+      <p class="cta-section__text">
+        Si quieres que tu hijo forme parte de la Escuela Deportiva del C.D. Moreres, infórmate sobre el proceso de inscripción, conoce nuestras temporadas o contacta con nosotros.
+      </p>
+      <div class="cta-section__actions">
+        <a href="/escuela-deportiva/inscripcion" class="btn btn--primary btn--lg">Inscripción</a>
+        <a href="/contacto" class="btn btn--secondary btn--lg">Contactar</a>
+        <a href="/escuela-deportiva/temporadas" class="btn btn--secondary btn--lg">Ver temporadas</a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .stats--light .stat__number {
+    color: var(--text-inverse);
+  }
+  .stats--light .stat__label {
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .goals-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  @media (min-width: 640px) {
+    .goals-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .goals-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .goal-card {
+    padding: var(--spacing-8);
+    background: var(--surface-white);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-neutral-100);
+    text-align: center;
+    transition: all var(--duration-normal) var(--easing-default);
+  }
+
+  .goal-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .goal-card__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto var(--spacing-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-50);
+    border-radius: var(--radius-xl);
+    color: var(--color-primary-500);
+  }
+
+  .goal-card__icon :global(svg) {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .goal-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--spacing-3);
+    color: var(--text-primary);
+  }
+
+  .goal-card__text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .split-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-10);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .split-block {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .split-block__lead {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .split-block__text {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .split-block__image img {
+    width: 100%;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .timeline-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .timeline__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-2);
+  }
+
+  .timeline__text {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .cta-section__title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--text-inverse);
+    margin-bottom: var(--spacing-4);
+  }
+
+  @media (min-width: 768px) {
+    .cta-section__title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cta-section__text {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 640px;
+    margin: 0 auto var(--spacing-8);
+    line-height: var(--leading-relaxed);
+  }
+
+  .cta-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-4);
+  }
+</style>

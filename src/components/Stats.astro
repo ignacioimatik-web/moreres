@@ -1,0 +1,21 @@
+---
+export interface StatItem {
+  number: string
+  label: string
+}
+
+export interface Props {
+  items: StatItem[]
+}
+
+const { items } = Astro.props
+---
+
+<div class="stats">
+  {items.map((stat) => (
+    <div class="stat">
+      <div class="stat__number">{stat.number}</div>
+      <div class="stat__label">{stat.label}</div>
+    </div>
+  ))}
+</div>

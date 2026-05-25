@@ -1,0 +1,124 @@
+---
+import { navigation } from "@data/navigation"
+
+const currentPath = Astro.url.pathname
+
+function isActive(href: string): boolean {
+  if (href === "/") return currentPath === "/"
+  return currentPath.startsWith(href)
+}
+---
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="header__logo" aria-label="Inicio - Asociación Moreres">
+      <img src="/assets/logos/moreres-logo-morera-letras.png" alt="ASOCIACIÓN MORERES" width="40" height="40" />
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        {
+          navigation.map((item) => (
+            <li class="nav__item">
+              {item.children ? (
+                <>
+                  <a
+                    href={item.href}
+                    class:list={["nav__link", { "nav__link--active": isActive(item.href) }]}
+                  >
+                    {item.label}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                  </a>
+                  <div class="nav__dropdown" role="menu">
+                    {item.children.map((child) => (
+                      <a href={child.href} class="nav__dropdown-item" role="menuitem">
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <a
+                  href={item.href}
+                  class:list={["nav__link", {
+                    "nav__link--highlighted": item.isHighlighted,
+                    "nav__link--active": isActive(item.href) && !item.isHighlighted
+                  }]}
+                >
+                  {item.label}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg class="nav-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6" id="menuBar1"/>
+        <line x1="3" y1="12" x2="21" y2="12" id="menuBar2"/>
+        <line x1="3" y1="18" x2="21" y2="18" id="menuBar3"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu__nav">
+      {
+        navigation.map((item) => (
+          <li class="mobile-menu__item">
+            <a href={item.href} class="mobile-menu__link" data-mobile-link>
+              {item.label}
+            </a>
+            {item.children && (
+              <ul class="mobile-menu__sublist">
+                {item.children.map((child) => (
+                  <li>
+                    <a href={child.href} class="mobile-menu__sublink" data-mobile-link>
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById("header")
+  const navToggle = document.getElementById("navToggle")
+  const mobileMenu = document.getElementById("mobileMenu")
+  const mobileLinks = document.querySelectorAll("[data-mobile-link]")
+
+  let isMobileOpen = false
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      header?.classList.add("header--scrolled")
+    } else {
+      header?.classList.remove("header--scrolled")
+    }
+  }
+
+  const toggleMenu = () => {
+    isMobileOpen = !isMobileOpen
+    mobileMenu?.classList.toggle("mobile-menu--open")
+    navToggle?.setAttribute("aria-expanded", String(isMobileOpen))
+    document.body.style.overflow = isMobileOpen ? "hidden" : ""
+  }
+
+  window.addEventListener("scroll", handleScroll, { passive: true })
+
+  navToggle?.addEventListener("click", toggleMenu)
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (isMobileOpen) toggleMenu()
+    })
+  })
+</script>

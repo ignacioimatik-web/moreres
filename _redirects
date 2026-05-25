@@ -1,0 +1,87 @@
+# Netlify redirects
+# Each line:  /from  /to  status
+
+/index.html                   /                                  301
+
+/iquestqueacute-es-moreres.html  /quienes-somos                  301
+/formacioacuten.html             /quienes-somos/proyecto-educativo 301
+
+/actividades.html              /actividades                      301
+/estudio.html                  /actividades/estudio              301
+/familias.html                 /actividades/familias             301
+/solidaridad.html              /actividades/solidaridad          301
+/the-mark.html                 /actividades/the-mark             301
+/the-mark1.html                /actividades/the-mark             301
+/formacioacuten-padres.html     /actividades/formacion-padres    301
+/calendario.html               /actividades/calendario           301
+/webs-de-intereacutes.html      /recursos/webs-de-interes        301
+/convivencias.html              /actividades/convivencias        301
+/convivencias-de-semana-santa-y-pascua.html  /actividades/convivencias 301
+/convivencias-de-verano.html    /actividades/convivencias         301
+/campamento-de-pascua.html      /actividades/campamentos         301
+/campamento-de-verano.html      /actividades/campamentos         301
+/campus-de-navidad.html         /actividades/campamentos         301
+
+/escuela-deportiva.html         /escuela-deportiva               301
+/plan-de-formacioacuten.html    /escuela-deportiva/plan-de-formacion 301
+/temporadas.html                /escuela-deportiva/temporadas    301
+/paacutedel.html                 /escuela-deportiva/padel         301
+/temporada-2021-2022.html       /escuela-deportiva/temporadas/2021-2022 301
+/temporada-2022-2023.html       /escuela-deportiva/temporadas/2022-2023 301
+/temporada-2023-2024.html       /escuela-deportiva/temporadas/2023-2024 301
+/temporada-2024-2025.html       /escuela-deportiva/temporadas/2024-2025 301
+/temporada-2025-2026.html       /escuela-deportiva/temporadas/2025-2026 301
+/temporada-2026-2027.html       /escuela-deportiva/temporadas/2026-2027 301
+/preinscripcioacuten-2026-2027.html  /escuela-deportiva/inscripcion 301
+/inscripcioacuten-2025-2026.html     /escuela-deportiva/inscripcion 301
+/jugadores-nuevos.html          /escuela-deportiva/inscripcion   301
+/jugadores-que-siguen-de-la-temporada-pasada.html  /escuela-deportiva/inscripcion 301
+/encuesta-escuela-deportiva.html  /escuela-deportiva/encuesta    301
+
+/galeriacutea-de-imaacutegenes.html  /galeria                    301
+/actividades-y-planes.html       /galeria                        301
+/curso-2020-2021.html            /galeria/curso-2020-2021        301
+/curso-2021-2022.html            /galeria/curso-2021-2022        301
+/curso-2022-2023.html            /galeria/curso-2022-2023        301
+/curso-2023-2024.html            /galeria/curso-2023-2024        301
+/curso-2024-2025.html            /galeria/curso-2024-2025        301
+/curso-2025-2026.html            /galeria/curso-2025-2026        301
+/planes-juveniles.html           /galeria/curso-2025-2026        301
+/planes-juveniles1.html          /galeria/curso-2023-2024        301
+/planes-juveniles2.html          /galeria/curso-2022-2023        301
+/planes-juveniles3.html          /galeria/curso-2024-2025        301
+/planes-familiares.html          /galeria/curso-2023-2024        301
+/planes-familiares1.html         /galeria/curso-2022-2023        301
+/planes-familiares2.html         /galeria/curso-2025-2026        301
+/planes-familiares3.html         /galeria/curso-2024-2025        301
+/planes-familiares4.html         /galeria/curso-2021-2022        301
+/planes-club.html                /galeria/curso-2022-2023        301
+/planes-club1.html               /galeria/curso-2024-2025        301
+/planes-club2.html               /galeria/curso-2021-2022        301
+/planes-club3.html               /galeria/curso-2025-2026        301
+/planes-club4.html               /galeria/curso-2023-2024        301
+/planes-eso-y-bach.html          /galeria/curso-2021-2022        301
+/planes-por-equipo.html          /galeria/planes-por-equipo      301
+/episodio-i-star-wars.html       /galeria/eventos                301
+/i-world-cup-moreres.html        /galeria/eventos                301
+/viaje-familiar-faacutetima.html /galeria/eventos                301
+/30ordf-jornada-de-la-familia.html  /galeria/eventos             301
+/romeriacutea-1-de-mayo.html     /galeria/eventos                301
+/presentacioacuten-del-club.html /galeria/eventos                301
+/navidad-con-los-ancianitos.html /galeria/eventos                301
+
+/quiero-ser-socio.html           /hazte-socio                    301
+/contacto.html                   /contacto                       301
+/contact                         /contacto                       301
+
+/plandeprotecciondelmenor.html   /legal                          301
+/plandeprotecciondelmenor-578735.html  /legal/politica-de-cookies 301
+/plandeprotecciondelmenor-578735-499072.html  /legal/proteccion-de-datos 301
+/plandeprotecciondelmenor-578735-499072-454032.html  /legal/politica-de-privacidad 301
+/plandeprotecciondelmenor-578735-499072-454032-407009.html  /legal/aviso-legal 301
+/plandeprotecciondelmenor-578735-499072-454032-407009-827998.html  /legal/privacidad-redes-sociales 301
+
+/aviso-legal                     /legal/aviso-legal              301
+/politica-de-privacidad          /legal/politica-de-privacidad   301
+/politica-de-cookies             /legal/politica-de-cookies      301
+/proteccion-de-datos             /legal/proteccion-de-datos      301

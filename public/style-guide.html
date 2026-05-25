@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de Estilo - Asociación Moreres</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <style>
+    body { padding-top: 0; }
+    .sg-sidebar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 260px;
+      height: 100vh;
+      background: var(--color-neutral-950);
+      color: var(--text-inverse);
+      padding: var(--spacing-6);
+      overflow-y: auto;
+      z-index: 100;
+    }
+    .sg-sidebar h2 {
+      font-size: var(--text-lg);
+      color: var(--text-inverse);
+      margin-bottom: var(--spacing-6);
+    }
+    .sg-sidebar nav a {
+      display: block;
+      padding: var(--spacing-2) 0;
+      font-size: var(--text-sm);
+      color: var(--color-neutral-400);
+      text-decoration: none;
+    }
+    .sg-sidebar nav a:hover { color: var(--text-inverse); }
+    .sg-main {
+      margin-left: 260px;
+      padding: var(--spacing-10);
+    }
+    .sg-section {
+      margin-bottom: var(--spacing-16);
+    }
+    .sg-section h1 {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--spacing-8);
+      padding-bottom: var(--spacing-4);
+      border-bottom: 2px solid var(--color-neutral-100);
+    }
+    .sg-subsection {
+      margin-bottom: var(--spacing-10);
+    }
+    .sg-subsection h3 {
+      font-size: var(--text-xl);
+      margin-bottom: var(--spacing-4);
+      color: var(--text-secondary);
+    }
+    .sg-subsection h4 {
+      font-size: var(--text-base);
+      margin-bottom: var(--spacing-3);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .sg-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-4);
+      margin-bottom: var(--spacing-6);
+      align-items: flex-start;
+    }
+    .sg-color-swatch {
+      width: 120px;
+      text-align: center;
+    }
+    .sg-color-swatch__box {
+      width: 100%;
+      height: 80px;
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--spacing-2);
+      border: 1px solid var(--color-neutral-200);
+    }
+    .sg-color-swatch__label {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+    }
+    .sg-type-sample {
+      margin-bottom: var(--spacing-4);
+    }
+    .sg-type-sample .label {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-1);
+    }
+    .sg-space {
+      display: inline-block;
+      background: var(--color-primary-100);
+      border-radius: var(--radius-sm);
+    }
+    .sg-card-preview {
+      max-width: 350px;
+    }
+    .sg-hero-preview {
+      position: relative;
+      min-height: 60vh;
+      background: var(--surface-hero);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+    }
+    .sg-hero-preview .hero__content {
+      padding: var(--spacing-10);
+    }
+    .sg-footer-preview {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+    }
+    pre {
+      background: var(--color-neutral-100);
+      padding: var(--spacing-4);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-sm);
+      overflow-x: auto;
+      margin-bottom: var(--spacing-4);
+    }
+    .sg-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--color-primary-100);
+      color: var(--color-primary-700);
+      margin-left: var(--spacing-2);
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sg-sidebar">
+  <h2>🎨 Guía de Estilo</h2>
+  <nav>
+    <a href="#brand">Identidad de Marca</a>
+    <a href="#colors">Paleta Cromática</a>
+    <a href="#typography">Tipografía</a>
+    <a href="#buttons">Botones</a>
+    <a href="#cards">Tarjetas (Cards)</a>
+    <a href="#hero">Hero Sections</a>
+    <a href="#header">Header</a>
+    <a href="#footer">Footer</a>
+    <a href="#gallery">Galería</a>
+    <a href="#features">Features / Misión</a>
+    <a href="#documents">Documentos</a>
+    <a href="#externals">Enlaces Externos</a>
+    <a href="#forms">Formularios</a>
+    <a href="#stats">Estadísticas</a>
+    <a href="#text">Estilos de Texto</a>
+  </nav>
+</aside>
+
+<!-- ===== MAIN ===== -->
+<main class="sg-main">
+
+  <!-- ===== BRAND ===== -->
+  <section class="sg-section" id="brand">
+    <h1>Identidad de Marca</h1>
+
+    <div class="sg-subsection">
+      <h3>Concepto</h3>
+      <p style="max-width:600px">
+        <strong>Moreres</strong> evoca el árbol de la morera, raíces profundas, crecimiento, fruto.
+        La identidad visual combina <strong>verde naturaleza</strong> (frescura, juventud, crecimiento),
+        <strong>terracota</strong> (calidez mediterránea, Castellón, hogar) y
+        <strong>dorado</strong> (excelencia, formación, valores).
+      </p>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Tono de Voz</h3>
+      <p style="max-width:600px">
+        Cálido, cercano, profesional, inspirador. Habla a <strong>padres</strong> con confianza,
+        a <strong>jóvenes</strong> con energía, a <strong>instituciones</strong> con solvencia.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== COLORS ===== -->
+  <section class="sg-section" id="colors">
+    <h1>Paleta Cromática</h1>
+
+    <div class="sg-subsection">
+      <h3>Primaria: Verde Morera</h3>
+      <div class="sg-row">
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#2d8a35"></div><div class="sg-color-swatch__label">500 · #2d8a35</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#236f2a"></div><div class="sg-color-swatch__label">600 · #236f2a</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#1d5923"></div><div class="sg-color-swatch__label">700 · #1d5923</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#0a210e"></div><div class="sg-color-swatch__label">950 · #0a210e</div></div>
+      </div>
+      <div class="sg-row">
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#f0f7f0"></div><div class="sg-color-swatch__label">50 · #f0f7f0</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#d9ecda"></div><div class="sg-color-swatch__label">100 · #d9ecda</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#b3d9b5"></div><div class="sg-color-swatch__label">200 · #b3d9b5</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#7cbf81"></div><div class="sg-color-swatch__label">300 · #7cbf81</div></div>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Secundaria: Terracota Mediterránea</h3>
+      <div class="sg-row">
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#d45d32"></div><div class="sg-color-swatch__label">500 · #d45d32</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#c14a27"></div><div class="sg-color-swatch__label">600 · #c14a27</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#a03822"></div><div class="sg-color-swatch__label">700 · #a03822</div></div>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Acento: Dorado</h3>
+      <div class="sg-row">
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#f28521"></div><div class="sg-color-swatch__label">500 · #f28521</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#e36f13"></div><div class="sg-color-swatch__label">600 · #e36f13</div></div>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Neutrales</h3>
+      <div class="sg-row">
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#ffffff; border-color:#ddd"></div><div class="sg-color-swatch__label">White</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#f8f9f8"></div><div class="sg-color-swatch__label">50</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#dddfdb"></div><div class="sg-color-swatch__label">200</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#9ca09a"></div><div class="sg-color-swatch__label">400</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#535650"></div><div class="sg-color-swatch__label">700</div></div>
+        <div class="sg-color-swatch"><div class="sg-color-swatch__box" style="background:#1f211f"></div><div class="sg-color-swatch__label">950</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TYPOGRAPHY ===== -->
+  <section class="sg-section" id="typography">
+    <h1>Tipografía</h1>
+
+    <div class="sg-subsection">
+      <h3>Display: Plus Jakarta Sans</h3>
+      <p style="font-family:'Plus Jakarta Sans';font-size:var(--text-5xl);font-weight:800;line-height:1.1;margin:0">
+        Asociación Juvenil Moreres
+      </p>
+      <p style="font-family:'Plus Jakarta Sans';font-size:var(--text-3xl);font-weight:700;line-height:1.2;">
+        Proyecto educativo para familias
+      </p>
+      <pre>&lt;h1&gt; → 3rem (48px) · 4.5rem (72px) en desktop<br>&lt;h2&gt; → 2.25rem (36px) · 3.75rem (60px) en desktop<br>&lt;h3&gt; → 1.875rem (30px) · 2.25rem (36px) en desktop</pre>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Body: Inter</h3>
+      <p style="max-width:600px;margin-bottom:var(--spacing-2)">
+        Este es el texto de cuerpo. Inter es una tipografía moderna, limpia y muy legible en pantalla.
+        Se usa para párrafos, textos largos y elementos de interfaz. Cuerpo a 16px con interlineado de 1.625.
+      </p>
+      <p style="font-size:var(--text-sm);color:var(--text-muted)">
+        Texto secundario a 14px en color neutral-700.
+      </p>
+      <pre>body → font-family: 'Inter', sans-serif · 1rem (16px) · leading 1.625<br>.lead → 1.125rem (18px)<br>small → 0.875rem (14px)<br>caption → 0.75rem (12px) · uppercase</pre>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Jerarquía Completa</h3>
+      <div class="sg-type-sample">
+        <div class="label">H1 · Plus Jakarta Sans · 800 · 3-4.5rem</div>
+        <h1>Asociación Juvenil Moreres</h1>
+      </div>
+      <div class="sg-type-sample">
+        <div class="label">H2 · Plus Jakarta Sans · 700 · 2.25-3.75rem</div>
+        <h2>Un proyecto educativo para tus hijos</h2>
+      </div>
+      <div class="sg-type-sample">
+        <div class="label">H3 · Plus Jakarta Sans · 600 · 1.875-2.25rem</div>
+        <h3>Formación humana, académica y espiritual</h3>
+      </div>
+      <div class="sg-type-sample">
+        <div class="label">H4 · Plus Jakarta Sans · 600 · 1.25-1.5rem</div>
+        <h4>Escuela Deportiva de Fútbol</h4>
+      </div>
+      <div class="sg-type-sample">
+        <div class="label">Lead · Inter · 400 · 1.125rem</div>
+        <p style="font-size:var(--text-lg);color:var(--text-secondary)">
+          La Asociación Moreres cuenta con una Escuela Deportiva de fútbol que surgió en 1996 y tuvo su relanzamiento en 2015.
+        </p>
+      </div>
+      <div class="sg-type-sample">
+        <div class="label">Body · Inter · 400 · 1rem</div>
+        <p>El C.D. Moreres tiene el objetivo de formar personas a través del deporte. El fútbol es una herramienta muy eficaz para trabajar una serie de valores y virtudes humanas que les sirva para su crecimiento personal.</p>
+      </div>
+      <div class="sg-type-sample">
+        <div class="label">Small · Inter · 400 · 0.875rem</div>
+        <p style="font-size:var(--text-sm);color:var(--text-muted)">Asociación Juvenil, Castellón (1971). Actividades familiares, formativas y deportivas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BUTTONS ===== -->
+  <section class="sg-section" id="buttons">
+    <h1>Botones</h1>
+
+    <div class="sg-subsection">
+      <h3>Variantes</h3>
+      <div class="sg-row">
+        <a class="btn btn--primary">Conoce Moreres</a>
+        <a class="btn btn--secondary">Saber más</a>
+        <a class="btn btn--outline">Ver galería</a>
+        <a class="btn btn--ghost">Cancelar</a>
+      </div>
+      <pre>&lt;a class="btn btn--primary"&gt;Conoce Moreres&lt;/a&gt;<br>&lt;a class="btn btn--secondary"&gt;Saber más&lt;/a&gt;<br>&lt;a class="btn btn--outline"&gt;Ver galería&lt;/a&gt;<br>&lt;a class="btn btn--ghost"&gt;Cancelar&lt;/a&gt;</pre>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Tamaños</h3>
+      <div class="sg-row">
+        <a class="btn btn--primary btn--sm">Pequeño</a>
+        <a class="btn btn--primary">Normal</a>
+        <a class="btn btn--primary btn--lg">Grande</a>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>CTAs principales del sitio</h3>
+      <div class="sg-row">
+        <a class="btn btn--primary btn--lg">Conoce Moreres</a>
+        <a class="btn btn--secondary btn--lg">Escuela Deportiva</a>
+        <a class="btn btn--primary btn--lg">Hazte socio</a>
+        <a class="btn btn--outline btn--lg">Inscripción</a>
+        <a class="btn btn--primary btn--lg">Contacto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CARDS ===== -->
+  <section class="sg-section" id="cards">
+    <h1>Tarjetas (Cards)</h1>
+
+    <div class="sg-subsection">
+      <h3>Card con imagen</h3>
+      <div class="sg-row">
+        <div class="sg-card-preview">
+          <div class="card">
+            <img class="card__image" src="assets/images/campamento-1_orig.jpg" alt="Campamento" style="background:var(--color-neutral-200)" onerror="this.style.background='#dddfdb';this.alt='Imagen no disponible'">
+            <div class="card__body">
+              <h3 class="card__title">Campamentos</h3>
+              <p class="card__text">Campamentos de Pascua y verano para jóvenes desde Primaria hasta Bachillerato.</p>
+            </div>
+            <div class="card__footer">
+              <a class="btn btn--outline btn--sm">Ver más</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-card-preview">
+          <div class="card">
+            <img class="card__image" src="assets/images/estudio-3_orig.jpg" alt="Estudio" style="background:var(--color-neutral-200)" onerror="this.style.background='#dddfdb';this.alt='Imagen no disponible'">
+            <div class="card__body">
+              <h3 class="card__title">Estudio</h3>
+              <p class="card__text">Salas de estudio de lunes a jueves con profesor cualificado para todas las edades.</p>
+            </div>
+            <div class="card__footer">
+              <a class="btn btn--outline btn--sm">Conocer más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Card Icono (sin imagen)</h3>
+      <div class="sg-row">
+        <div class="sg-card-preview">
+          <div class="card card--icon">
+            <div class="card__icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <h3 class="card__title">Formación</h3>
+            <p class="card__text">Formación humana, académica y espiritual para todas las edades.</p>
+          </div>
+        </div>
+
+        <div class="sg-card-preview">
+          <div class="card card--icon">
+            <div class="card__icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/></svg>
+            </div>
+            <h3 class="card__title">Familias</h3>
+            <p class="card__text">Actividades familiares y formación para padres.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Cards Grid (3 columnas)</h3>
+      <div class="cards-grid" style="max-width:100%">
+        <div class="card card--icon">
+          <div class="card__icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+          <h3 class="card__title">Formación humana</h3>
+          <p class="card__text">Sinceridad, lealtad, fortaleza, generosidad... Un programa de virtudes para un desarrollo pleno.</p>
+        </div>
+        <div class="card card--icon">
+          <div class="card__icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg></div>
+          <h3 class="card__title">Formación académica</h3>
+          <p class="card__text">Acompañamiento en el estudio, técnicas de aprendizaje y enriquecimiento cultural.</p>
+        </div>
+        <div class="card card--icon">
+          <div class="card__icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+          <h3 class="card__title">Formación espiritual</h3>
+          <p class="card__text">Charlas y conversaciones semanales para mejorar la dimensión espiritual de cada socio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HERO ===== -->
+  <section class="sg-section" id="hero">
+    <h1>Hero Sections</h1>
+
+    <div class="sg-subsection">
+      <h3>Hero Principal (Home)</h3>
+      <div class="sg-hero-preview">
+        <div class="hero__overlay" style="background:linear-gradient(135deg,rgba(31,33,31,0.85) 0%,rgba(31,33,31,0.4) 50%,rgba(31,33,31,0.2) 100%)"></div>
+        <div class="hero__content" style="min-height:60vh;display:flex;flex-direction:column;justify-content:center">
+          <span class="hero__tagline">Castellón · Desde 1971</span>
+          <h1 class="hero__title">Asociación Juvenil Moreres</h1>
+          <p class="hero__subtitle">Actividades familiares, formativas y deportivas. Escuela de fútbol, desde 2015. Un proyecto educativo que ayuda a los padres en la formación de sus hijos.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--lg">Conoce Moreres</a>
+            <a class="btn btn--secondary btn--lg">Escuela Deportiva</a>
+          </div>
+        </div>
+      </div>
+      <pre style="margin-top:var(--spacing-4)">&lt;section class="hero"&gt;
+  &lt;div class="hero__background"&gt;
+    &lt;img src="assets/original/hero-background.jpg" alt="" /&gt;
+  &lt;/div&gt;
+  &lt;div class="hero__overlay"&gt;&lt;/div&gt;
+  &lt;div class="hero__content"&gt;
+    &lt;span class="hero__tagline"&gt;Castellón · Desde 1971&lt;/span&gt;
+    &lt;h1 class="hero__title"&gt;Asociación Juvenil Moreres&lt;/h1&gt;
+    &lt;p class="hero__subtitle"&gt;...&lt;/p&gt;
+    &lt;div class="hero__actions"&gt;
+      &lt;a class="btn btn--primary btn--lg"&gt;Conoce Moreres&lt;/a&gt;
+      &lt;a class="btn btn--secondary btn--lg"&gt;Escuela Deportiva&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Hero Simple (Páginas interiores)</h3>
+      <div style="background:linear-gradient(135deg,var(--color-primary-700),var(--color-primary-900));padding:var(--spacing-12);border-radius:var(--radius-2xl)">
+        <span class="breadcrumbs" style="margin-bottom:var(--spacing-4)">
+          <li><a href="#" style="color:rgba(255,255,255,0.7)">Inicio</a></li>
+          <li style="color:rgba(255,255,255,0.6)">Actividades</li>
+        </span>
+        <h1 style="color:var(--text-inverse);font-size:var(--text-4xl);margin-bottom:var(--spacing-3)">Actividades</h1>
+        <p style="color:rgba(255,255,255,0.85);font-size:var(--text-lg);max-width:560px">
+          Actividades ordinarias, planes familiares, campamentos y convivencias para todas las edades.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HEADER ===== -->
+  <section class="sg-section" id="header">
+    <h1>Header</h1>
+
+    <div class="sg-subsection">
+      <h3>Barra de navegación principal</h3>
+      <div style="background:rgba(255,255,255,0.97);border:1px solid var(--color-neutral-100);border-radius:var(--radius-xl);padding:var(--spacing-4) var(--spacing-6);margin-bottom:var(--spacing-4)">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:var(--spacing-3)">
+            <div style="width:2.5rem;height:2.5rem;background:var(--color-primary-500);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:var(--text-sm)">M</div>
+            <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:var(--text-lg)">Moreres</span>
+          </div>
+          <nav style="display:flex;align-items:center;gap:var(--spacing-1)">
+            <a style="padding:var(--spacing-2) var(--spacing-3);font-size:var(--text-sm);font-weight:500;color:var(--color-primary-600);background:var(--color-primary-50);border-radius:var(--radius-md);text-decoration:none">Inicio</a>
+            <a style="padding:var(--spacing-2) var(--spacing-3);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);text-decoration:none">Quiénes somos</a>
+            <a style="padding:var(--spacing-2) var(--spacing-3);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);text-decoration:none">Actividades</a>
+            <a style="padding:var(--spacing-2) var(--spacing-3);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);text-decoration:none">Escuela Deportiva</a>
+            <a style="padding:var(--spacing-2) var(--spacing-3);font-size:var(--text-sm);font-weight:500;color:var(--text-secondary);text-decoration:none">Galería</a>
+            <a style="padding:var(--spacing-2) var(--spacing-4);font-size:var(--text-sm);font-weight:600;color:white;background:var(--color-primary-500);border-radius:var(--radius-md);text-decoration:none">Hazte socio</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Especificaciones</h3>
+      <ul>
+        <li><strong>Altura:</strong> 4.5rem (72px)</li>
+        <li><strong>Fondo:</strong> white al 97% + backdrop-filter blur(12px)</li>
+        <li><strong>Borde inferior:</strong> 1px solid neutral-100</li>
+        <li><strong>Sombras:</strong> al scrollear, shadow-md</li>
+        <li><strong>Dropdown:</strong> hover con fade + translateY</li>
+        <li><strong>Mobile:</strong> menú hamburguesa en &lt; 1024px</li>
+        <li><strong>CTA destacado:</strong> enlace "Hazte socio" con botón primary</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <section class="sg-section" id="footer">
+    <h1>Footer</h1>
+
+    <div class="sg-footer-preview" style="background:var(--color-neutral-950);padding:var(--spacing-8)">
+      <div style="max-width:1200px;margin:0 auto">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--spacing-8);margin-bottom:var(--spacing-8)">
+          <div>
+            <div style="display:flex;align-items:center;gap:var(--spacing-3);margin-bottom:var(--spacing-4)">
+              <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:var(--text-lg);color:white">Moreres</span>
+            </div>
+            <p style="font-size:var(--text-sm);color:var(--color-neutral-400);margin-bottom:var(--spacing-4)">
+              Asociación Juvenil, Castellón (1971). Actividades familiares, formativas y deportivas. Escuela de fútbol, desde 2015.
+            </p>
+            <div style="display:flex;gap:var(--spacing-2)">
+              <div style="width:2.5rem;height:2.5rem;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--color-neutral-400)">f</div>
+              <div style="width:2.5rem;height:2.5rem;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--color-neutral-400)">t</div>
+              <div style="width:2.5rem;height:2.5rem;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--color-neutral-400)">i</div>
+              <div style="width:2.5rem;height:2.5rem;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--color-neutral-400)">y</div>
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-neutral-300);margin-bottom:var(--spacing-4)">Asociación</h4>
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Inicio</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Quiénes somos</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Hazte socio</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Contacto</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-neutral-300);margin-bottom:var(--spacing-4)">Actividades</h4>
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Estudio</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Escuela Deportiva</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Convivencias</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Calendario</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-size:var(--text-sm);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-neutral-300);margin-bottom:var(--spacing-4)">Legal</h4>
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Aviso legal</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Privacidad</li>
+              <li style="margin-bottom:var(--spacing-2);color:var(--color-neutral-400);font-size:var(--text-sm)">Cookies</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--color-neutral-800);padding-top:var(--spacing-6);display:flex;justify-content:space-between;align-items:center">
+          <p style="font-size:var(--text-xs);color:var(--color-neutral-500);margin:0">© 2026 Asociación Moreres. Todos los derechos reservados.</p>
+          <p style="font-size:var(--text-xs);color:var(--color-neutral-500);margin:0">Calle Pare Ricardo, 1 · 12003 Castellón</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="sg-section" id="gallery">
+    <h1>Galería</h1>
+
+    <div class="gallery" style="max-width:100%">
+      <div class="gallery__item gallery__item--featured">
+        <div style="width:100%;height:100%;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-sm)">Featured: Campamento</div>
+      </div>
+      <div class="gallery__item">
+        <div style="width:100%;height:100%;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-sm)">IMG</div>
+        <div class="gallery__overlay"><span class="gallery__label">Estudio</span></div>
+      </div>
+      <div class="gallery__item">
+        <div style="width:100%;height:100%;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-sm)">IMG</div>
+        <div class="gallery__overlay"><span class="gallery__label">Familia</span></div>
+      </div>
+      <div class="gallery__item">
+        <div style="width:100%;height:100%;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-sm)">IMG</div>
+        <div class="gallery__overlay"><span class="gallery__label">Deporte</span></div>
+      </div>
+      <div class="gallery__item">
+        <div style="width:100%;height:100%;background:var(--color-neutral-200);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--text-sm)">IMG</div>
+        <div class="gallery__overlay"><span class="gallery__label">Convivencia</span></div>
+      </div>
+    </div>
+    <pre style="margin-top:var(--spacing-4)">.gallery → grid 2-4 columnas responsive<br>.gallery__item → aspect-ratio 1, overflow hidden<br>.gallery__item--featured → span 2 columns & rows<br>.gallery__overlay → hover gradient + label</pre>
+  </section>
+
+  <!-- ===== FEATURES / MISIÓN ===== -->
+  <section class="sg-section" id="features">
+    <h1>Bloques de Misión / Features</h1>
+
+    <div class="features" style="max-width:100%">
+      <div class="feature">
+        <div class="feature__number">01</div>
+        <div class="feature__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h3 class="feature__title">Formación</h3>
+        <p class="feature__text">La juventud es la época de las primeras decisiones. Ofrecemos las herramientas necesarias para que cada socio elija las mejores.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature__number">02</div>
+        <div class="feature__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="feature__title">Escuela Deportiva</h3>
+        <p class="feature__text">El C.D. Moreres tiene el objetivo de formar personas a través del deporte. Valores y virtudes para el crecimiento personal.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature__number">03</div>
+        <div class="feature__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="feature__title">Familias</h3>
+        <p class="feature__text">La Asociación Moreres surge por iniciativa de las familias en la formación de sus hijos. Actividades conjuntas y formación para padres.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature__number">04</div>
+        <div class="feature__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="28" height="28"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <h3 class="feature__title">Solidaridad</h3>
+        <p class="feature__text">Las visitas a los más necesitados, la donación de alimentos y el acompañamiento a residencias de ancianos forman parte de nuestra actividad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOCUMENTS ===== -->
+  <section class="sg-section" id="documents">
+    <h1>Bloques de Documentos</h1>
+
+    <div style="display:flex;flex-direction:column;gap:var(--spacing-3);max-width:500px">
+      <div class="doc-block">
+        <div class="doc-block__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="doc-block__info">
+          <div class="doc-block__name">estudio_on.pdf</div>
+          <div class="doc-block__meta">PDF · 2 MB</div>
+        </div>
+        <a class="doc-block__download" href="#">Descargar</a>
+      </div>
+
+      <div class="doc-block">
+        <div class="doc-block__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="doc-block__info">
+          <div class="doc-block__name">c.d._moreres_temporada_2024-2025.pdf</div>
+          <div class="doc-block__meta">PDF · 11.2 MB</div>
+        </div>
+        <a class="doc-block__download" href="#">Descargar</a>
+      </div>
+
+      <div class="doc-block">
+        <div class="doc-block__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <div class="doc-block__info">
+          <div class="doc-block__name">folleto_verano_2024.pdf</div>
+          <div class="doc-block__meta">PDF · 7.4 MB</div>
+        </div>
+        <a class="doc-block__download" href="#">Descargar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXTERNAL LINKS ===== -->
+  <section class="sg-section" id="externals">
+    <h1>Enlaces Externos</h1>
+
+    <div style="display:flex;flex-direction:column;gap:var(--spacing-3);max-width:500px">
+      <a class="ext-link" href="#">
+        <div class="ext-link__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </div>
+        <span class="ext-link__text">librosparajovenes.aceprensa.com</span>
+        <svg class="ext-link__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a class="ext-link" href="#">
+        <div class="ext-link__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </div>
+        <span class="ext-link__text">delibris.org</span>
+        <svg class="ext-link__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+
+      <a class="ext-link" href="#">
+        <div class="ext-link__icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </div>
+        <span class="ext-link__text">almudi.org - Listado de películas</span>
+        <svg class="ext-link__arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FORMS ===== -->
+  <section class="sg-section" id="forms">
+    <h1>Formularios</h1>
+
+    <div style="max-width:500px">
+      <div class="form-group">
+        <label class="form-label">Nombre <span class="required">*</span></label>
+        <input class="form-input" type="text" placeholder="Tu nombre">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email <span class="required">*</span></label>
+        <input class="form-input" type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mensaje <span class="required">*</span></label>
+        <textarea class="form-textarea" placeholder="Escribe tu mensaje..."></textarea>
+      </div>
+      <button class="btn btn--primary">Enviar</button>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="sg-section" id="stats">
+    <h1>Estadísticas</h1>
+
+    <div class="stats" style="max-width:600px">
+      <div class="stat">
+        <div class="stat__number">1971</div>
+        <div class="stat__label">Fundación</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">185+</div>
+        <div class="stat__label">Jugadores</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">11</div>
+        <div class="stat__label">Equipos</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">50+</div>
+        <div class="stat__label">Años de historia</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEXT STYLES ===== -->
+  <section class="sg-section" id="text">
+    <h1>Estilos de Texto Adicionales</h1>
+
+    <div class="sg-subsection">
+      <h3>Tagline / Etiqueta</h3>
+      <div>
+        <span class="tagline">Castellón · Desde 1971</span>
+        <pre style="margin-top:var(--spacing-3)">&lt;span class="tagline"&gt;Castellón · Desde 1971&lt;/span&gt;</pre>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Separador</h3>
+      <div class="separator"></div>
+      <pre>&lt;div class="separator"&gt;&lt;/div&gt;</pre>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Breadcrumbs (migas de pan)</h3>
+      <ul class="breadcrumbs">
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Actividades</a></li>
+        <li>Estudio</li>
+      </ul>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Cita / Testimonial</h3>
+      <div class="quote" style="max-width:600px">
+        <p class="quote__text">"Somos Moreres: un proyecto educativo que quiere ayudar a los padres en la formación de sus hijos. Ofrecemos un conjunto de actividades en las que, en un ambiente de trabajo, amistad y confianza, se lo pasen bien a la vez que mejoren como personas."</p>
+        <p class="quote__author">— Asociación Moreres</p>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Filter Bar (selector de temporadas/años)</h3>
+      <div class="filter-bar">
+        <button class="filter-btn filter-btn--active">2025-2026</button>
+        <button class="filter-btn">2024-2025</button>
+        <button class="filter-btn">2023-2024</button>
+        <button class="filter-btn">2022-2023</button>
+        <button class="filter-btn">2021-2022</button>
+      </div>
+    </div>
+
+    <div class="sg-subsection">
+      <h3>Timeline (temporadas)</h3>
+      <div class="timeline" style="max-width:400px">
+        <div class="timeline__item">
+          <div class="timeline__year">2025-2026</div>
+          <p style="font-size:var(--text-sm)">11 equipos · 185+ jugadores</p>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__year">2024-2025</div>
+          <p style="font-size:var(--text-sm)">10º aniversario · 11 equipos · 175+ jugadores</p>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__year">2023-2024</div>
+          <p style="font-size:var(--text-sm)">10 equipos · 170+ jugadores · Campus de Navidad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>

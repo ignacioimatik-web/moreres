@@ -1,0 +1,76 @@
+---
+export interface Props {
+  tagline?: string
+  title?: string
+  description?: string
+  variant?: "white" | "light" | "primary" | "dark"
+  narrow?: boolean
+  center?: boolean
+}
+
+const { tagline, title, description, variant = "white", narrow = false, center = false } = Astro.props
+---
+
+<section class:list={["section", variant !== "white" && `section--${variant}`]}>
+  <div class:list={["container", narrow && "container--narrow"]}>
+    {(tagline || title || description) && (
+      <header class:list={["section__header", center && "text-center"]}>
+        {tagline && <span class:list={["tagline", variant !== "white" && "tagline--light"]}>{tagline}</span>}
+        {title && <h2 class="section__title">{title}</h2>}
+        {title && <div class:list={["separator", center && "separator--center", variant !== "white" && "separator--light"]} />}
+        {description && <p class="section__text">{description}</p>}
+      </header>
+    )}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section__header {
+    margin-bottom: var(--spacing-12);
+  }
+
+  .section__header.text-center {
+    text-align: center;
+  }
+
+  .section__title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    line-height: var(--leading-tight);
+    color: var(--text-primary);
+  }
+
+  .section--light .section__title,
+  .section--primary .section__title,
+  .section--dark .section__title {
+    color: var(--text-inverse);
+  }
+
+  .section__text {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 640px;
+    line-height: var(--leading-relaxed);
+  }
+
+  .text-center .section__text {
+    margin: 0 auto;
+  }
+
+  .section--light .section__text,
+  .section--primary .section__text,
+  .section--dark .section__text {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  @media (min-width: 768px) {
+    .section__title {
+      font-size: var(--text-4xl);
+    }
+    .section__text {
+      font-size: var(--text-xl);
+    }
+  }
+</style>

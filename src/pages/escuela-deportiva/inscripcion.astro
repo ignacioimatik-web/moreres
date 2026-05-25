@@ -1,0 +1,524 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import ExtLink from "@/components/ExtLink.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Inscripción | Escuela Deportiva Moreres",
+  description: "Preinscripción y matriculación en la Escuela Deportiva del C.D. Moreres. Período de inscripción del 10 al 20 de julio. 110€."
+}
+const breadcrumbs = getBreadcrumbs("/escuela-deportiva/inscripcion")
+const storeUrl = "https://s10equipaciones.com/categoria-producto/futbol/moreres/"
+const contactEmail = "asociacionmoreres@gmail.com"
+const legalText = `De conformidad con la normativa vigente y aplicable en protección de datos de carácter personal, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de MORERES CLUB DEPORTIVO con CIF G12685137 y domicilio social sito en C/ CRONISTA REVEST, Nº1-BAJO 12003, CASTELLON (CASTELLÓN), y que a continuación se relacionan sus respectivas finalidades, plazos de conservación y bases legitimadoras. Para aquellos tratamientos que lo requieran, se informa también de la posible elaboración de perfiles y decisiones automatizadas, así como las posibles cesiones y las transferencias internacionales que MORERES CLUB DEPORTIVO tiene previsto realizar:
+- Finalidad: Atender sus consultas y/o solicitudes e Instalación de cookies - Plazo de conservación: mientras se mantenga el consentimiento prestado. - Base legítima: El consentimiento del interesado.
+De acuerdo con los derechos que le confiere la normativa vigente y aplicable en protección de datos podrá ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión ("derecho al olvido"), portabilidad y oposición al tratamiento de sus datos de carácter personal así como la revocación del consentimiento prestado para el tratamiento de los mismos, dirigiendo su petición a la dirección postal C/ CRONISTA REVEST, Nº1-BAJO 12003, CASTELLON (CASTELLÓN) o al correo electrónico ${contactEmail}. Podrá dirigirse a la Autoridad de Control competente para presentar la reclamación que considere oportuna.
+Los datos identificados con una marca (*) se entienden como campos obligatorios y requeridos, en consecuencia se entenderán como necesarios para acometer las finalidades mencionadas con anterioridad.
+Con envío del formulario de recogida de datos usted acepta la política de privacidad de MORERES CLUB DEPORTIVO.`
+---
+
+<BaseLayout title={route.title} description={route.description} breadcrumbs={breadcrumbs}>
+  <PageHeader title="Inscripción" subtitle="Temporada 2025-2026 · C.D. Moreres" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Proceso de inscripción" title="Sigue estos pasos" center>
+    <div class="steps">
+      <div class="step">
+        <div class="step__number">1</div>
+        <div class="step__body">
+          <h3 class="step__title">Pago y equipación</h3>
+          <p class="step__text">
+            Realiza el pago de <strong>110€</strong> correspondiente a la inscripción a través del giro bancario llevado a cabo por el club durante los meses de julio y agosto, y realiza el pedido de la ropa deportiva según las necesidades de cada familia.
+          </p>
+          <a href={storeUrl} target="_blank" rel="noopener noreferrer" class="btn btn--outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Tienda de equipaciones
+          </a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number">2</div>
+        <div class="step__body">
+          <h3 class="step__title">Elige tu tipo de inscripción</h3>
+          <p class="step__text">
+            Selecciona si eres jugador nuevo o jugador que sigue de la temporada pasada y rellena el formulario de inscripción correspondiente.
+          </p>
+          <p class="step__note">
+            Una vez realizada la inscripción, el jugador ya pertenece oficialmente al C.D. Moreres y queda a expensas de la información proporcionada por los grupos de WhatsApp.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number">3</div>
+        <div class="step__body">
+          <h3 class="step__title">Confirmación y contacto</h3>
+          <p class="step__text">
+            Tras enviar el formulario recibirás la confirmación y más información a través de los canales del Club. Para cualquier duda, escríbenos a <a href={`mailto:${contactEmail}`} class="step__link">{contactEmail}</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Período de inscripción" title="Del 10 al 20 de julio" center>
+    <p class="period-info">
+      El período de inscripción se debe llevar a cabo entre el <strong>10 de julio</strong> y el <strong>20 de julio</strong>.
+    </p>
+
+    <div class="tipo-grid">
+      <a href="#form-nuevo" class="tipo-card">
+        <div class="tipo-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="tipo-card__title">Jugadores nuevos</h3>
+        <p class="tipo-card__text">Primera inscripción en el C.D. Moreres</p>
+        <span class="btn btn--primary">Formulario nuevo jugador</span>
+      </a>
+
+      <a href="#form-continua" class="tipo-card">
+        <div class="tipo-card__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        </div>
+        <h3 class="tipo-card__title">Jugadores que siguen</h3>
+        <p class="tipo-card__text">Renovación de la temporada pasada</p>
+        <span class="btn btn--primary">Formulario continuación</span>
+      </a>
+    </div>
+  </Section>
+
+  <Section tagline="Formulario" id="form-nuevo" title="Nueva inscripción">
+    <form class="inscripcion-form" action="https://formsubmit.co/asociacionmoreres@gmail.com" method="POST">
+      <input type="hidden" name="_next" value="https://asociacionmoreres.org/escuela-deportiva/inscripcion" />
+      <input type="hidden" name="_subject" value="Nueva inscripción Escuela Deportiva" />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="playerName" class="form-label">Nombre del jugador *</label>
+          <input type="text" id="playerName" name="playerName" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="birthDate" class="form-label">Fecha de nacimiento *</label>
+          <input type="date" id="birthDate" name="birthDate" class="form-input" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="parentName" class="form-label">Nombre del padre/madre/tutor *</label>
+          <input type="text" id="parentName" name="parentName" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Teléfono de contacto *</label>
+          <input type="tel" id="phone" name="phone" class="form-input" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">Correo electrónico *</label>
+        <input type="email" id="email" name="email" class="form-input" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Tipo de inscripción *</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input type="radio" name="tipo" value="nuevo" required />
+            <span class="radio-custom" />
+            Nueva alta
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="tipo" value="continua" />
+            <span class="radio-custom" />
+            Continuación
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comments" class="form-label">Comentarios</label>
+        <textarea id="comments" name="comments" class="form-textarea" rows="3" placeholder="Indica cualquier información adicional que consideres relevante..."></textarea>
+      </div>
+
+      <details class="legal-details">
+        <summary class="legal-details__summary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Protección de datos
+        </summary>
+        <div class="legal-details__content">
+          {legalText.split('\n').map((p) => (
+            p.trim() ? <p class="legal-text">{p}</p> : null
+          ))}
+          <p class="legal-text">
+            <a href="/legal/politica-de-privacidad" target="_blank">Ver política de privacidad completa</a>
+          </p>
+        </div>
+      </details>
+
+      <button type="submit" class="btn btn--primary btn--lg btn--full">
+        Enviar inscripción
+      </button>
+    </form>
+  </Section>
+
+  <Section tagline="Continuación" id="form-continua" title="Renovación de inscripción">
+    <form class="inscripcion-form" action="https://formsubmit.co/asociacionmoreres@gmail.com" method="POST">
+      <input type="hidden" name="_next" value="https://asociacionmoreres.org/escuela-deportiva/inscripcion" />
+      <input type="hidden" name="_subject" value="Renovación inscripción Escuela Deportiva" />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="playerName2" class="form-label">Nombre del jugador *</label>
+          <input type="text" id="playerName2" name="playerName" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="team" class="form-label">Equipo / Categoría *</label>
+          <input type="text" id="team" name="team" class="form-input" required placeholder="Ej: Prebenjamín, Benjamín, Alevín..." />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="parentName2" class="form-label">Nombre del padre/madre/tutor *</label>
+          <input type="text" id="parentName2" name="parentName" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="phone2" class="form-label">Teléfono de contacto *</label>
+          <input type="tel" id="phone2" name="phone" class="form-input" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email2" class="form-label">Correo electrónico *</label>
+        <input type="email" id="email2" name="email" class="form-input" required />
+      </div>
+
+      <div class="form-group">
+        <label for="comments2" class="form-label">Comentarios</label>
+        <textarea id="comments2" name="comments" class="form-textarea" rows="3" placeholder="Cambio de categoría, problemas con el pago, etc."></textarea>
+      </div>
+
+      <details class="legal-details">
+        <summary class="legal-details__summary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Protección de datos
+        </summary>
+        <div class="legal-details__content">
+          {legalText.split('\n').map((p) => (
+            p.trim() ? <p class="legal-text">{p}</p> : null
+          ))}
+          <p class="legal-text">
+            <a href="/legal/politica-de-privacidad" target="_blank">Ver política de privacidad completa</a>
+          </p>
+        </div>
+      </details>
+
+      <button type="submit" class="btn btn--primary btn--lg btn--full">
+        Enviar renovación
+      </button>
+    </form>
+  </Section>
+
+  <Section variant="dark" center>
+    <div class="cta-section">
+      <h2 class="cta-section__title">¿Tienes dudas?</h2>
+      <p class="cta-section__text">
+        Si necesitas más información antes de inscribirte, no dudes en contactar con nosotros.
+      </p>
+      <div class="cta-section__actions">
+        <a href={`mailto:${contactEmail}`} class="btn btn--primary btn--lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          {contactEmail}
+        </a>
+        <a href="/contacto" class="btn btn--secondary btn--lg">Formulario de contacto</a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    max-width: 720px;
+    margin: 0 auto;
+    counter-reset: step;
+  }
+
+  @media (min-width: 768px) {
+    .steps {
+      gap: var(--spacing-8);
+    }
+  }
+
+  .step {
+    display: flex;
+    gap: var(--spacing-5);
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .step__number {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-extrabold);
+    color: var(--text-inverse);
+    background: var(--color-primary-500);
+    border-radius: var(--radius-full);
+  }
+
+  .step__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-2);
+  }
+
+  .step__text {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .step__note {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: var(--leading-relaxed);
+  }
+
+  .step__link {
+    color: var(--color-primary-600);
+    text-decoration: underline;
+  }
+
+  .step__link:hover {
+    color: var(--color-primary-700);
+  }
+
+  .period-info {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    max-width: 560px;
+    margin: 0 auto var(--spacing-10);
+    line-height: var(--leading-relaxed);
+    text-align: center;
+  }
+
+  .tipo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .tipo-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .tipo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+    padding: var(--spacing-8) var(--spacing-6);
+    background: var(--surface-white);
+    border-radius: var(--radius-2xl);
+    border: 2px solid var(--color-neutral-100);
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--easing-default);
+    cursor: pointer;
+  }
+
+  .tipo-card:hover {
+    border-color: var(--color-primary-300);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .tipo-card__icon {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-50);
+    border-radius: var(--radius-xl);
+    color: var(--color-primary-500);
+  }
+
+  .tipo-card__icon :global(svg) {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .tipo-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .tipo-card__text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-align: center;
+    line-height: var(--leading-relaxed);
+  }
+
+  .tipo-card .btn {
+    margin-top: auto;
+  }
+
+  .inscripcion-form {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-4);
+    }
+  }
+
+  .radio-group {
+    display: flex;
+    gap: var(--spacing-6);
+    margin-top: var(--spacing-3);
+  }
+
+  .radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--text-primary);
+    cursor: pointer;
+  }
+
+  .radio-custom {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--color-neutral-300);
+    border-radius: var(--radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--duration-fast) var(--easing-default);
+    flex-shrink: 0;
+  }
+
+  .radio-label input:checked + .radio-custom {
+    border-color: var(--color-primary-500);
+    background: var(--color-primary-500);
+    box-shadow: inset 0 0 0 3px white;
+  }
+
+  .radio-label input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .legal-details {
+    margin-bottom: var(--spacing-6);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .legal-details__summary {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--text-secondary);
+    background: var(--surface-light);
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--duration-fast) var(--easing-default);
+  }
+
+  .legal-details__summary:hover {
+    color: var(--color-primary-600);
+  }
+
+  .legal-details__summary svg {
+    color: var(--color-primary-500);
+    flex-shrink: 0;
+  }
+
+  .legal-details__content {
+    padding: var(--spacing-4);
+  }
+
+  .legal-text {
+    font-size: var(--text-xs);
+    line-height: var(--leading-relaxed);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-2);
+  }
+
+  .legal-text a {
+    color: var(--color-primary-600);
+    text-decoration: underline;
+  }
+
+  .cta-section__title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--text-inverse);
+    margin-bottom: var(--spacing-4);
+  }
+
+  @media (min-width: 768px) {
+    .cta-section__title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cta-section__text {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 560px;
+    margin: 0 auto var(--spacing-8);
+    line-height: var(--leading-relaxed);
+  }
+
+  .cta-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-4);
+  }
+
+  .cta-section__actions .btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+</style>

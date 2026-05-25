@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Formación padres | Asociación Moreres",
+  description: "Charlas de formación humana y cristiana para padres."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/formacion-padres")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Formación padres" subtitle="Formación humana y cristiana para familias" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Padres" title="Colaboración familia-club">
+    <div class="content-block">
+      <p class="content-block__text">
+        Semanalmente, se ofrecen una serie de charlas de formación humana y cristiana para padres.
+        Una tarde al mes, se realiza una jornada de reflexión y oración.
+      </p>
+      <p class="content-block__text">
+        Todo esto no sería posible sin la colaboración estrecha de unos padres preocupados por la
+        formación y el buen desarrollo de sus hijos. Desde el Club se ofrece formación humana y
+        cristiana a todos los padres que lo deseen.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-4);
+  }
+</style>

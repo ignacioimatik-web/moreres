@@ -1,0 +1,365 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+import { pages } from "@data/seo"
+
+const route = pages["/galeria"]
+const breadcrumbs = getBreadcrumbs("/galeria")
+
+const courses = [
+  {
+    year: "2025-2026",
+    desc: "Imágenes del curso actual",
+    href: "/galeria/curso-2025-2026",
+    images: [
+      "/assets/gallery/cartel-temporada-2025-2026_orig.png",
+      "/assets/gallery/c-d-moreres-2024-2025_orig.png",
+      "/assets/gallery/cena-de-navidad-2025-2.jpg",
+      "/assets/gallery/cena-de-navidad-2025-3.jpg",
+    ]
+  },
+  {
+    year: "2024-2025",
+    desc: "Actividades comunitarias",
+    href: "/galeria/curso-2024-2025",
+    images: [
+      "/assets/gallery/cartel-temporada-2023-2024.png",
+      "/assets/gallery/community-1.jpg",
+      "/assets/gallery/community-2.jpg",
+      "/assets/gallery/community-3.jpg",
+    ]
+  },
+  {
+    year: "2023-2024",
+    desc: "Convivencias familiares y villancicos",
+    href: "/galeria/curso-2023-2024",
+    images: [
+      "/assets/gallery/convivencia-familiar-1.jpg",
+      "/assets/gallery/convivencia-familiar-2.jpg",
+      "/assets/gallery/familias.jpg",
+      "/assets/gallery/villancicos-familias.jpg",
+    ]
+  },
+  {
+    year: "2022-2023",
+    desc: "Operación Cobra, convivencias y cenas",
+    href: "/galeria/curso-2022-2023",
+    images: [
+      "/assets/gallery/cartel-2022-2023.png",
+      "/assets/gallery/cena-de-navidad-1.jpg",
+      "/assets/gallery/operaci-n-cobra-2023.jpg",
+      "/assets/gallery/operaci-n-cobra-2023-1-eso.jpg",
+    ]
+  },
+  {
+    year: "2021-2022",
+    desc: "Campus de Navidad, campeones y salidas ESO",
+    href: "/galeria/curso-2021-2022",
+    images: [
+      "/assets/gallery/abril-1-2022.png",
+      "/assets/gallery/eso-alicante.jpg",
+      "/assets/gallery/campus-de-navidad_orig.jpeg",
+      "/assets/gallery/campeones_orig.jpeg",
+    ]
+  },
+  {
+    year: "2020-2021",
+    desc: "Convivencia Murcia y talleres",
+    href: "/galeria/curso-2020-2021",
+    images: [
+      "/assets/gallery/septiembre-1-2022.png",
+      "/assets/gallery/convivencia-murcia_orig.jpg",
+      "/assets/gallery/hablar-en-p-blico-1.jpg",
+      "/assets/gallery/hablar-en-p-blico-2.jpg",
+    ]
+  }
+]
+
+const categories = [
+  {
+    title: "Planes por equipo",
+    desc: "Imágenes de planes realizados por cada equipo de la Escuela Deportiva.",
+    href: "/galeria/planes-por-equipo",
+    image: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-1.jpg",
+  },
+  {
+    title: "Eventos especiales",
+    desc: "Star Wars, World Cup, viaje a Fátima, Jornada de la Familia, Romería y más.",
+    href: "/galeria/eventos",
+    image: "/assets/gallery/operaci-n-cobra-1.jpg",
+  }
+]
+---
+
+<BaseLayout title={route.title} description={route.description} ogImage={route.ogImage}>
+  <div class="gallery-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="/">Inicio</a>
+        <span>Galería</span>
+      </div>
+      <h1 class="gallery-hero__title">Galería</h1>
+      <p class="gallery-hero__text">Imágenes de nuestras actividades, convivencias y eventos</p>
+    </div>
+  </div>
+
+  <Section tagline="Álbumes" title="Cursos" center>
+    <div class="albums-grid">
+      {courses.map((course) => (
+        <a href={course.href} class="album-card">
+          <div class="album-card__preview">
+            {course.images.slice(0, 4).map((src) => (
+              <div class="album-card__thumb">
+                <img src={src} alt="" loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <div class="album-card__body">
+            <h2 class="album-card__title">{course.year}</h2>
+            <p class="album-card__desc">{course.desc}</p>
+            <span class="btn btn--outline btn--sm">
+              Ver álbum
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Categorías" title="Explora por tipo">
+    <div class="cats-grid">
+      {categories.map((cat) => (
+        <a href={cat.href} class="cat-card">
+          <div class="cat-card__image">
+            <img src={cat.image} alt={cat.title} loading="lazy" />
+            <div class="cat-card__overlay" />
+          </div>
+          <div class="cat-card__body">
+            <h2 class="cat-card__title">{cat.title}</h2>
+            <p class="cat-card__desc">{cat.desc}</p>
+            <span class="btn btn--primary btn--sm">
+              Ver galería
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+    list-style: none;
+    padding: 0;
+  }
+
+  .breadcrumbs span,
+  .breadcrumbs a {
+    font-size: var(--text-sm);
+  }
+
+  .breadcrumbs a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--text-inverse);
+  }
+
+  .breadcrumbs span {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .breadcrumbs a:not(:last-child)::after,
+  .breadcrumbs span:not(:last-child)::after {
+    content: '/';
+    margin-left: var(--spacing-2);
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .gallery-hero {
+    padding-top: calc(var(--header-height) + var(--spacing-16));
+    padding-bottom: var(--spacing-12);
+    background: linear-gradient(135deg, var(--color-primary-700), var(--color-primary-900));
+    color: var(--text-inverse);
+  }
+
+  @media (min-width: 768px) {
+    .gallery-hero {
+      padding-top: calc(var(--header-height) + var(--spacing-24));
+      padding-bottom: var(--spacing-16);
+    }
+  }
+
+  .gallery-hero__title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-extrabold);
+    margin-bottom: var(--spacing-3);
+  }
+
+  @media (min-width: 768px) {
+    .gallery-hero__title {
+      font-size: var(--text-5xl);
+    }
+  }
+
+  .gallery-hero__text {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 560px;
+  }
+
+  .albums-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  @media (min-width: 640px) {
+    .albums-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .albums-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .album-card {
+    display: block;
+    background: var(--surface-white);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    border: 1px solid var(--color-neutral-100);
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--easing-default);
+  }
+
+  .album-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .album-card__preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    aspect-ratio: 4 / 3;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  .album-card__thumb {
+    overflow: hidden;
+  }
+
+  .album-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--easing-default);
+  }
+
+  .album-card:hover .album-card__thumb img {
+    transform: scale(1.08);
+  }
+
+  .album-card__body {
+    padding: var(--spacing-5) var(--spacing-6) var(--spacing-6);
+  }
+
+  .album-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-1);
+  }
+
+  .album-card__desc {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-4);
+    line-height: var(--leading-relaxed);
+  }
+
+  .cats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  @media (min-width: 640px) {
+    .cats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .cat-card {
+    position: relative;
+    display: block;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    text-decoration: none;
+    aspect-ratio: 16 / 10;
+  }
+
+  .cat-card__image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cat-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--easing-default);
+  }
+
+  .cat-card:hover .cat-card__image img {
+    transform: scale(1.05);
+  }
+
+  .cat-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+  }
+
+  .cat-card__body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding: var(--spacing-6);
+  }
+
+  .cat-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    color: var(--text-inverse);
+    margin-bottom: var(--spacing-2);
+  }
+
+  .cat-card__desc {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--spacing-4);
+  }
+</style>

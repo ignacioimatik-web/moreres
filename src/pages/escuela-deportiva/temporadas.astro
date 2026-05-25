@@ -1,0 +1,194 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Card from "@/components/Card.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Temporadas | Escuela Deportiva Moreres",
+  description: "Histórico de temporadas y revistas mensuales del C.D. Moreres."
+}
+const breadcrumbs = getBreadcrumbs("/escuela-deportiva/temporadas")
+
+const currentSeason = {
+  year: "2026-2027",
+  image: "/assets/gallery/cartel-temporada-2026-2027_orig.png",
+  text: "Información de la temporada actual",
+  href: "/escuela-deportiva/temporadas/2026-2027"
+}
+
+const recentSeasons = [
+  {
+    year: "2025-2026",
+    image: "/assets/gallery/cartel-temporada-2025-2026_orig.png",
+    text: "11 equipos y más de 185 jugadores",
+    href: "/escuela-deportiva/temporadas/2025-2026"
+  },
+  {
+    year: "2024-2025",
+    image: "/assets/gallery/cartel-temporada-2023-2024.png",
+    text: "10º aniversario. Nuevo escudo y marca S10",
+    href: "/escuela-deportiva/temporadas/2024-2025"
+  },
+  {
+    year: "2023-2024",
+    image: "/assets/gallery/cartel-temporada-2023-2024.png",
+    text: "Temporada 2023-2024",
+    href: "/escuela-deportiva/temporadas/2023-2024"
+  }
+]
+
+const archiveSeasons = [
+  {
+    year: "2022-2023",
+    image: "/assets/gallery/cartel-2022-2023.png",
+    text: "Temporada 2022-2023",
+    href: "/escuela-deportiva/temporadas/2022-2023"
+  },
+  {
+    year: "2021-2022",
+    image: "/assets/images/10-aniversario-escudo.png",
+    text: "Temporada 2021-2022",
+    href: "/escuela-deportiva/temporadas/2021-2022"
+  }
+]
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Temporadas" subtitle="Histórico de temporadas del C.D. Moreres" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Temporada actual" title={currentSeason.year} center>
+    <div class="season-hero">
+      <div class="season-hero__image">
+        <img src={currentSeason.image} alt={`Temporada ${currentSeason.year}`} loading="eager" />
+      </div>
+      <p class="season-hero__text">{currentSeason.text}</p>
+      <a href={currentSeason.href} class="btn btn--primary btn--lg">
+        Ver temporada {currentSeason.year}
+      </a>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Recientes" title="Temporadas recientes">
+    <div class="cards-grid">
+      {recentSeasons.map((s) => (
+        <Card
+          image={{ src: s.image, alt: `Temporada ${s.year}` }}
+          title={s.year}
+          text={s.text}
+          href={s.href}
+        />
+      ))}
+    </div>
+  </Section>
+
+  <Section tagline="Archivo" title="Temporadas anteriores">
+    <div class="archive-grid">
+      {archiveSeasons.map((s) => (
+        <a href={s.href} class="archive-card">
+          <div class="archive-card__image">
+            <img src={s.image} alt={`Temporada ${s.year}`} loading="lazy" />
+          </div>
+          <div class="archive-card__body">
+            <h3 class="archive-card__title">{s.year}</h3>
+            <p class="archive-card__text">{s.text}</p>
+            <span class="btn btn--outline btn--sm">
+              Ver temporada
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .season-hero {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .season-hero__image {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .season-hero__image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-xl);
+    margin: 0 auto;
+  }
+
+  .season-hero__text {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-6);
+    line-height: var(--leading-relaxed);
+  }
+
+  .archive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  @media (min-width: 640px) {
+    .archive-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .archive-card {
+    display: block;
+    background: var(--surface-white);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    border: 1px solid var(--color-neutral-100);
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--easing-default);
+  }
+
+  .archive-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+
+  .archive-card__image {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .archive-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--easing-default);
+  }
+
+  .archive-card:hover .archive-card__image img {
+    transform: scale(1.05);
+  }
+
+  .archive-card__body {
+    padding: var(--spacing-6);
+  }
+
+  .archive-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--spacing-2);
+    color: var(--text-primary);
+  }
+
+  .archive-card__text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--spacing-4);
+  }
+</style>

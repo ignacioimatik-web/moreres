@@ -1,0 +1,34 @@
+---
+import LegalLayout from "@/layouts/LegalLayout.astro"
+import DocBlock from "@/components/DocBlock.astro"
+
+const route = {
+  title: "Plan de protección del menor | Asociación Moreres",
+  description: "Plan de protección y seguridad para menores de Moreres Club Deportivo."
+}
+---
+
+<LegalLayout title={route.title} description={route.description}>
+  <h1>Plan de protección del menor</h1>
+
+  <p>MORERES CLUB DEPORTIVO, en su compromiso con la protección de los menores, dispone de un plan de protección del menor que establece las medidas y protocolos para garantizar un entorno seguro para todos los niños y adolescentes que participan en nuestras actividades.</p>
+
+  <p>El plan completo está disponible en formato PDF para su consulta.</p>
+
+  <div style="margin-top: var(--spacing-6)">
+    <DocBlock
+      name="Plan de protección y seguridad para menores"
+      href="/assets/legal/plan_menores_-_proteccion_y_seguridad_moreres_nuevo.pdf"
+      type="pdf"
+      size="2 MB"
+    />
+  </div>
+
+  <h2>Principios fundamentales</h2>
+  <ul>
+    <li>Derecho del menor a ser escuchado y participante activo.</li>
+    <li>Protección frente a cualquier forma de violencia o abuso.</li>
+    <li>Formación de los educadores y monitores en protección infantil.</li>
+    <li>Protocolos de actuación ante situaciones de riesgo.</li>
+  </ul>
+</LegalLayout>

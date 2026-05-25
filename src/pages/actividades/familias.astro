@@ -1,0 +1,78 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Familias | Asociación Moreres",
+  description: "Actividades familiares, formación para padres y programa de formación en virtudes."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/familias")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Familias" subtitle="La familia, base de nuestro proyecto educativo" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Asociación familiar" title="Iniciativa de las familias">
+    <div class="content-block">
+      <p class="content-block__lead">
+        La Asociación Moreres surge por iniciativa de las familias en la formación de sus hijos.
+      </p>
+      <p class="content-block__text">
+        Para ello, se llevan a cabo una serie de actividades familiares conjuntas periódicamente
+        en las que se comparten las experiencias, puntos de vista e iniciativas que ayuden a las familias.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Actividades" title="Planes para toda la familia">
+    <div class="features">
+      <article class="feature">
+        <div class="feature__number">01</div>
+        <h3 class="feature__title">Planes familiares</h3>
+        <p class="feature__text">De forma periódica, se llevan a cabo actividades familiares por cursos y de manera conjunta para pasarlo bien.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__number">02</div>
+        <h3 class="feature__title">Formación padres</h3>
+        <p class="feature__text">Semanalmente, se ofrecen charlas de formación humana y cristiana. Una tarde al mes, jornada de reflexión y oración.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__number">03</div>
+        <h3 class="feature__title">Programa de virtudes</h3>
+        <p class="feature__text">De manera conjunta con la Escuela Deportiva, contamos con un plan de formación anual trabajado entre entrenadores y familias.</p>
+      </article>
+    </div>
+  </Section>
+
+  <Section tagline="Compromiso" title="Formación para padres">
+    <div class="content-block">
+      <p class="content-block__text">
+        Todo esto no sería posible sin la colaboración estrecha de unos padres preocupados por la
+        formación y el buen desarrollo de sus hijos. Desde el Club se ofrece formación humana y
+        cristiana a todos los padres que lo deseen.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__lead {
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-4);
+  }
+</style>

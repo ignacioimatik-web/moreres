@@ -1,0 +1,339 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+import { pages } from "@data/seo"
+
+const route = pages["/hazte-socio"]
+const breadcrumbs = getBreadcrumbs("/hazte-socio")
+---
+
+<BaseLayout title={route.title} description={route.description} breadcrumbs={breadcrumbs}>
+  <PageHeader title="Hazte socio" subtitle="Forma parte de nuestra gran familia" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Asóciate" title="Ventajas de ser socio" center>
+    <div class="content-block">
+      <p class="content-block__text">
+        Haciéndote socio de Moreres, tienes la posibilidad de participar en las actividades habituales del Club, además de tener un precio rebajado en actividades extraordinarias, como son los campamentos o convivencias. Contribuyes a mantener un proyecto educativo que lleva más de 50 años formando a jóvenes en Castellón.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="primary" center>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-card__amount">35€</div>
+        <div class="pricing-card__period">/ mes</div>
+        <p class="pricing-card__text">Pago por giro bancario</p>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__amount">-15€</div>
+        <div class="pricing-card__period">descuento 1<sup>er</sup> hermano</div>
+        <p class="pricing-card__text">Si tiene 1 hermano como socio se aplica un descuento de 15€/mes</p>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__amount">Gratis</div>
+        <div class="pricing-card__period">2º hermano</div>
+        <p class="pricing-card__text">Si tiene 2 hermanos como socios, uno de ellos no paga cuota mensual</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3 class="benefit-card__title">Acceso a actividades</h3>
+        <p class="benefit-card__text">Participa en todas las actividades formativas, deportivas y familiares del Club.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3 class="benefit-card__title">Precios especiales</h3>
+        <p class="benefit-card__text">Tarifas reducidas en campamentos, convivencias y escuela deportiva.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3 class="benefit-card__title">Formación continua</h3>
+        <p class="benefit-card__text">Acceso a los programas de formación humana, académica y espiritual.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-card__icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <h3 class="benefit-card__title">Sala de estudio</h3>
+        <p class="benefit-card__text">Acceso a las salas de estudio de lunes a jueves para tus hijos.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Formulario" title="Solicita tu admisión" center narrow>
+    <form class="membership-form" action="https://formsubmit.co/asociacionmoreres@gmail.com" method="POST">
+      <input type="hidden" name="_next" value="https://asociacionmoreres.org/hazte-socio" />
+      <input type="hidden" name="_subject" value="Nueva solicitud de socio" />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="parentName" class="form-label">Nombre del padre/madre/tutor *</label>
+          <input type="text" id="parentName" name="parentName" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="phone" class="form-label">Teléfono *</label>
+          <input type="tel" id="phone" name="phone" class="form-input" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email" class="form-label">Correo electrónico *</label>
+          <input type="email" id="email" name="email" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label for="children" class="form-label">Nº de hijos que desea inscribir *</label>
+          <input type="number" id="children" name="children" class="form-input" min="1" max="10" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="address" class="form-label">Domicilio</label>
+          <input type="text" id="address" name="address" class="form-input" placeholder="Calle, número, piso" />
+        </div>
+        <div class="form-group">
+          <label for="city" class="form-label">Ciudad</label>
+          <input type="text" id="city" name="city" class="form-input" placeholder="Castellón" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comments" class="form-label">Comentarios o preguntas</label>
+        <textarea id="comments" name="comments" class="form-textarea" rows="4" placeholder="Cualquier información adicional que quieras hacernos llegar..."></textarea>
+      </div>
+
+      <details class="legal-details">
+        <summary class="legal-details__summary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Protección de datos
+        </summary>
+        <div class="legal-details__content">
+          <p class="legal-text">De conformidad con la normativa vigente y aplicable en protección de datos de carácter personal, le informamos que sus datos serán incorporados al sistema de tratamiento titularidad de MORERES CLUB DEPORTIVO con CIF G12685137 y domicilio social sito en C/ CRONISTA REVEST, Nº1-BAJO 12003, CASTELLON (CASTELLÓN).</p>
+          <p class="legal-text">La finalidad del tratamiento es gestionar su solicitud de admisión como socio. La base legítima es el consentimiento del interesado. Los datos se conservarán mientras se mantenga la relación asociativa.</p>
+          <p class="legal-text">Puede ejercer los derechos de acceso, rectificación, limitación de tratamiento, supresión, portabilidad y oposición dirigiendo su petición a la dirección postal o al correo electrónico <a href="mailto:asociacionmoreres@gmail.com">asociacionmoreres@gmail.com</a>.</p>
+          <p class="legal-text">Con el envío del formulario usted acepta la política de privacidad de MORERES CLUB DEPORTIVO.</p>
+          <p class="legal-text"><a href="/legal/politica-de-privacidad">Ver política de privacidad completa</a></p>
+        </div>
+      </details>
+
+      <button type="submit" class="btn btn--primary btn--lg btn--full">
+        Solicitar admisión
+      </button>
+    </form>
+
+    <div class="form-footnote">
+      <p>
+        <strong>Nota sobre datos sensibles:</strong> El formulario completo de socio incluye la recogida de datos bancarios para la domiciliación de cuotas. Si tu solicitud es aceptada, te contactaremos para completar el proceso de forma segura.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="dark" center>
+    <div class="cta-section">
+      <h2 class="cta-section__title">¿Prefieres contactar primero?</h2>
+      <p class="cta-section__text">
+        Si tienes alguna duda antes de decidirte, escríbenos y te informaremos sin compromiso.
+      </p>
+      <div class="cta-section__actions">
+        <a href="/contacto" class="btn btn--primary btn--lg">Contactar</a>
+        <a href="mailto:asociacionmoreres@gmail.com" class="btn btn--secondary btn--lg">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          asociacionmoreres@gmail.com
+        </a>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .pricing-card {
+    padding: var(--spacing-8);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-2xl);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+
+  .pricing-card__amount {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-extrabold);
+    color: var(--text-inverse);
+    line-height: 1;
+    margin-bottom: var(--spacing-1);
+  }
+
+  .pricing-card__period {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary-200);
+    margin-bottom: var(--spacing-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-card__text {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: var(--leading-relaxed);
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  @media (min-width: 640px) {
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .benefit-card {
+    padding: var(--spacing-6);
+    background: var(--surface-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-neutral-100);
+    transition: all var(--duration-normal) var(--easing-default);
+  }
+
+  .benefit-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .benefit-card__icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-50);
+    border-radius: var(--radius-lg);
+    color: var(--color-primary-500);
+    margin-bottom: var(--spacing-4);
+  }
+
+  .benefit-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--spacing-2);
+    color: var(--text-primary);
+  }
+
+  .benefit-card__text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .membership-form {
+    max-width: 560px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-4);
+    }
+  }
+
+  .form-footnote {
+    max-width: 560px;
+    margin: var(--spacing-6) auto 0;
+    padding: var(--spacing-4);
+    background: var(--color-warning-50);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-warning-200);
+  }
+
+  .form-footnote p {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    line-height: var(--leading-relaxed);
+  }
+
+  .cta-section__title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-bold);
+    color: var(--text-inverse);
+    margin-bottom: var(--spacing-4);
+  }
+
+  @media (min-width: 768px) {
+    .cta-section__title {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .cta-section__text {
+    font-size: var(--text-lg);
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 560px;
+    margin: 0 auto var(--spacing-8);
+    line-height: var(--leading-relaxed);
+  }
+
+  .cta-section__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-4);
+  }
+
+  .cta-section__actions .btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+</style>

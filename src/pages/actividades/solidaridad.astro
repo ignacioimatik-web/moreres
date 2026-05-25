@@ -1,0 +1,127 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Solidaridad | Asociación Moreres",
+  description: "Actividades solidarias: visitas a residencias, donación de alimentos, acompañamiento."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/solidaridad")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Solidaridad" subtitle="Aprender a servir" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Compromiso social" title="Pendientes de los demás">
+    <div class="content-block">
+      <p class="content-block__lead">
+        Las actividades solidarias tienen un papel importante en la formación de los jóvenes.
+      </p>
+      <p class="content-block__text">
+        Entre estas actividades destacan las visitas a los más necesitados para echarles una mano
+        o simplemente conversar con ellos, la donación de alimentos a las personas que están faltos
+        de ello o el acompañamiento en fechas señaladas a residencias de ancianos con el fin de
+        entretenerles durante un rato.
+      </p>
+      <p class="content-block__text">
+        Todo ello hace que los socios de Moreres aprendan con naturalidad a estar pendientes de los
+        demás y a entender su vida como un servicio a la sociedad y a todos los que nos rodean
+        empezando por su propia familia.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Actividades" title="¿Qué hacemos?">
+    <div class="activities-grid">
+      <div class="solidarity-item">
+        <div class="solidarity-item__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <h3>Visitas a residencias</h3>
+        <p>Acompañamiento a personas mayores en fechas señaladas.</p>
+      </div>
+      <div class="solidarity-item">
+        <div class="solidarity-item__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <h3>Donación de alimentos</h3>
+        <p>Campañas de recogida para los más necesitados.</p>
+      </div>
+      <div class="solidarity-item">
+        <div class="solidarity-item__icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Acompañamiento</h3>
+        <p>Conversación y apoyo a quienes lo necesitan.</p>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__lead {
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-4);
+  }
+
+  .activities-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  @media (min-width: 640px) {
+    .activities-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .solidarity-item {
+    padding: var(--spacing-6);
+    background: var(--surface-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-neutral-100);
+    text-align: center;
+  }
+
+  .solidarity-item__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto var(--spacing-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-50);
+    border-radius: var(--radius-xl);
+    color: var(--color-primary-500);
+  }
+
+  .solidarity-item h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--spacing-2);
+    color: var(--text-primary);
+  }
+
+  .solidarity-item p {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+</style>

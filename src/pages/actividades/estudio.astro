@@ -1,0 +1,109 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Estudio | Asociación Moreres",
+  description: "Salas de estudio de lunes a jueves para socios de 5º Primaria a 2º Bachillerato."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/estudio")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Estudio" subtitle="Clave del desarrollo académico y personal" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Actividad ordinaria" title="Un espacio para aprender a estudiar" center>
+    <div class="content-block">
+      <p class="content-block__lead">
+        El estudio constituye uno de los ejes del proyecto educativo de Moreres. Hemos creado un
+        espacio óptimo para aprender a trabajar junto a los demás, evitando las distracciones y
+        logrando un clima de trabajo intenso.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Horarios" title="De lunes a jueves">
+    <div class="content-block">
+      <p class="content-block__text">
+        De lunes a jueves los socios de 5º de Primaria a 2º de Bachillerato cuentan con salas de
+        estudio para lograr un rendimiento satisfactorio en sus labores académicas. La actividad
+        empieza a las 18:00 / 18:30 y termina a las 20:00, dependiendo de las edades. Antes del
+        comienzo tienen tiempo de merienda y otras actividades o juegos.
+      </p>
+    </div>
+  </Section>
+
+  <Section tagline="Metodología" title="Un programa adecuado">
+    <div class="content-block">
+      <p class="content-block__text">
+        La sala de estudio es un lugar de silencio, trabajo y concentración. Un profesor cualificado
+        dirige la sesión ayudando a evitar distracciones, animando a organizar y planificar el tiempo
+        disponible y procurando que el crecimiento personal vaya acompañado de la consolidación de
+        hábitos de trabajo y estudio.
+      </p>
+      <p class="content-block__text" style="margin-top: var(--spacing-4)">
+        En edades tempranas es fundamental la adquisición de un hábito de estudio firme y bien
+        consolidado, que haga a los niños, adolescentes y jóvenes capaces de afrontar futuros retos
+        académicos y laborales más exigentes.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Objetivos" title="¿Qué buscamos?" center>
+    <div class="objectives-grid">
+      <div class="objective">Ayudar a realizar programaciones adaptadas y realistas de estudio.</div>
+      <div class="objective">Consolidar hábitos de trabajo intelectual propios.</div>
+      <div class="objective">Fomentar el estudio serio, ordenado y personal.</div>
+      <div class="objective">Dotar de técnicas y herramientas de aprendizaje.</div>
+      <div class="objective">Facilitar la evaluación personal del rendimiento.</div>
+      <div class="objective">Favorecer seguridad, autonomía y motivación en el estudio.</div>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__lead {
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 640px) {
+    .objectives-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .objective {
+    padding: var(--spacing-4);
+    background: var(--surface-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-neutral-100);
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+    border-left: 3px solid var(--color-primary-500);
+  }
+</style>

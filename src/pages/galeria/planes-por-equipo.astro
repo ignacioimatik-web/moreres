@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Gallery from "@/components/Gallery.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Planes por equipo | Galería Moreres",
+  description: "Imágenes de planes realizados por cada equipo de la Escuela Deportiva."
+}
+const breadcrumbs = getBreadcrumbs("/galeria/planes-por-equipo")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Planes por equipo" subtitle="Galería de imágenes" breadcrumbs={breadcrumbs} />
+
+  <Section>
+    <Gallery
+      columns={3}
+      images={[
+        { src: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-1.jpg", alt: "Plan familiar escoleta y prebenjamín" },
+        { src: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-2.jpg", alt: "Plan familiar escoleta y prebenjamín" },
+        { src: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-3.jpg", alt: "Plan familiar escoleta y prebenjamín" },
+        { src: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-4.jpg", alt: "Plan familiar escoleta y prebenjamín" },
+        { src: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-5.jpg", alt: "Plan familiar escoleta y prebenjamín" },
+        { src: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-6.jpg", alt: "Plan familiar escoleta y prebenjamín" },
+        { src: "/assets/gallery/plan-familiar-escoleta-y-prebenjam-n-7.jpg", alt: "Plan familiar escoleta y prebenjamín" },
+        { src: "/assets/gallery/plan-3eso-1.jpeg", alt: "Plan 3º ESO" },
+        { src: "/assets/gallery/plan-3eso.jpeg", alt: "Plan 3º ESO" },
+        { src: "/assets/gallery/plan-bach.jpg", alt: "Plan Bachillerato" },
+        { src: "/assets/gallery/plan-inmaculada-1.jpg", alt: "Plan Inmaculada" },
+        { src: "/assets/gallery/plan-inmaculada-2.jpg", alt: "Plan Inmaculada" },
+        { src: "/assets/gallery/plan-sr-p-del-y-the-mark.jpeg", alt: "Plan SRP del y The Mark" },
+      ]}
+    />
+  </Section>
+</BaseLayout>

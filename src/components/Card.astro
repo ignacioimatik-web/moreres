@@ -1,0 +1,41 @@
+---
+export interface Props {
+  image?: { src: string; alt: string }
+  title: string
+  text?: string
+  href?: string
+  variant?: "default" | "icon" | "horizontal"
+  icon?: string
+}
+
+const { image, title, text, href, variant = "default", icon } = Astro.props
+const Tag = href ? "a" : "div"
+---
+
+<Tag
+  href={href}
+  class:list={["card", variant === "icon" && "card--icon", variant === "horizontal" && "card--horizontal"]}
+>
+  {variant === "icon" && icon && (
+    <div class="card__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        {icon}
+      </svg>
+    </div>
+  )}
+  {image && variant !== "icon" && (
+    <img class="card__image" src={image.src} alt={image.alt} loading="lazy" decoding="async" />
+  )}
+  <div class="card__body">
+    <h3 class="card__title">{title}</h3>
+    {text && <p class="card__text">{text}</p>}
+  </div>
+  {href && variant !== "icon" && (
+    <div class="card__footer">
+      <span class="btn btn--outline btn--sm">
+        Saber más
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </div>
+  )}
+</Tag>

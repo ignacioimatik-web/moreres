@@ -1,0 +1,79 @@
+---
+import LegalLayout from "@/layouts/LegalLayout.astro"
+import { pages } from "@data/seo"
+
+const route = pages["/legal"]
+---
+
+<LegalLayout title={route.title} description={route.description} robots={route.robots}>
+  <h1>Información legal</h1>
+
+  <p>En esta sección encontrará toda la información legal relativa a MORERES CLUB DEPORTIVO, incluyendo el aviso legal, las políticas de privacidad y protección de datos, así como el plan de protección del menor.</p>
+
+  <div class="legal-links">
+    <a href="/legal/aviso-legal" class="legal-card">
+      <h3>Aviso legal</h3>
+      <p>Condiciones de uso del sitio web, identificación del responsable y propiedad intelectual.</p>
+    </a>
+
+    <a href="/legal/politica-de-privacidad" class="legal-card">
+      <h3>Política de privacidad</h3>
+      <p>Información detallada sobre el tratamiento de datos personales y derechos del usuario.</p>
+    </a>
+
+    <a href="/legal/politica-de-cookies" class="legal-card">
+      <h3>Política de cookies</h3>
+      <p>Uso de cookies en el sitio web y cómo configurarlas.</p>
+    </a>
+
+    <a href="/legal/proteccion-de-datos" class="legal-card">
+      <h3>Protección de datos</h3>
+      <p>Información básica sobre protección de datos personales.</p>
+    </a>
+
+    <a href="/legal/privacidad-redes-sociales" class="legal-card">
+      <h3>Privacidad redes sociales</h3>
+      <p>Política de privacidad para perfiles en redes sociales.</p>
+    </a>
+
+    <a href="/legal/proteccion-del-menor" class="legal-card">
+      <h3>Protección del menor</h3>
+      <p>Plan de protección y seguridad para menores.</p>
+    </a>
+  </div>
+</LegalLayout>
+
+<style>
+  .legal-links {
+    display: grid;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-8);
+  }
+
+  .legal-card {
+    display: block;
+    padding: var(--spacing-5) var(--spacing-6);
+    border: 1px solid var(--color-neutral-200);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .legal-card:hover {
+    border-color: var(--color-primary-300);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .legal-card h3 {
+    margin: 0 0 var(--spacing-1);
+    font-size: var(--text-lg);
+    color: var(--color-primary-700);
+  }
+
+  .legal-card p {
+    margin: 0;
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Campamentos | Asociación Moreres",
+  description: "Campamentos de Pascua, verano y Campus de Navidad."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/campamentos")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Campamentos" subtitle="Diversión, amistad y aprendizaje" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Tiempo de vacaciones" title="Una experiencia inolvidable">
+    <div class="content-block">
+      <p class="content-block__text">
+        Los campamentos para Educación Primaria están organizados en fechas señaladas como Pascua
+        y verano, buscando una temática atractiva para que puedan asistir el máximo de asistentes
+        posible. El campamento es un momento especial del curso para el niño, por la cantidad de
+        actividades que realiza, lo que le lleva a disfrutar, a aprender y a hacer nuevas amistades.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light" tagline="Verano" title="II Moreres Football Camp">
+    <div class="content-block">
+      <p class="content-block__text">
+        Este verano vuelve la actividad más esperada por todos los pequeños: el campamento basado
+        en la temática de fútbol en Moreres. La actividad principal está basada en el fútbol, con
+        sesiones específicas que combinan aspectos teóricos de vídeo y formación con sesiones
+        prácticas en campo. El campamento también cuenta con diferentes actividades deportivas y
+        lúdicas, tanto terrestres como acuáticas.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Gallery from "@/components/Gallery.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Eventos especiales | Galería Moreres",
+  description: "Eventos especiales de Moreres: Star Wars, World Cup, viaje a Fátima, Jornada de la Familia, Romería y más."
+}
+const breadcrumbs = getBreadcrumbs("/galeria/eventos")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Eventos especiales" subtitle="Galería de imágenes" breadcrumbs={breadcrumbs} />
+
+  <Section>
+    <Gallery
+      images={[
+        { src: "/assets/gallery/operaci-n-cobra-1.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/operaci-n-cobra-2.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/operaci-n-cobra-3.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/operaci-n-cobra-4.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/operaci-n-cobra-5.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/operaci-n-cobra-6.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/operaci-n-cobra-7.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/operaci-n-cobra-8.jpg", alt: "Operación Cobra" },
+        { src: "/assets/gallery/fuga-de-alcatraz-1.jpg", alt: "Fuga de Alcatraz" },
+        { src: "/assets/gallery/fuga-de-alcatraz-2.jpg", alt: "Fuga de Alcatraz" },
+        { src: "/assets/gallery/fuga-de-alcatraz-3.jpg", alt: "Fuga de Alcatraz" },
+        { src: "/assets/gallery/fuga-de-alcatraz-4.jpg", alt: "Fuga de Alcatraz" },
+        { src: "/assets/gallery/fuga-de-alcatraz-5.jpg", alt: "Fuga de Alcatraz" },
+        { src: "/assets/gallery/fuga-de-alcatraz-6.jpg", alt: "Fuga de Alcatraz" },
+        { src: "/assets/gallery/fuga-de-alcatraz-7.jpg", alt: "Fuga de Alcatraz" },
+        { src: "/assets/gallery/the-mark-1-1.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-1-2.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-1-3.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-1-4.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-2-1.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-2-2.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-2-3.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-2-4.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-3-1.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-3-2.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-3-3.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-3.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-2.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-foto.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-ltima-1.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/the-mark-ltima-2.jpg", alt: "The Mark" },
+        { src: "/assets/gallery/convivencia-teruel-1.jpg", alt: "Convivencia Teruel" },
+        { src: "/assets/gallery/convivencia-teruel-1-1.jpg", alt: "Convivencia Teruel" },
+        { src: "/assets/gallery/convivencia-teruel-2.jpg", alt: "Convivencia Teruel" },
+        { src: "/assets/gallery/rommel-1.jpg", alt: "Rommel" },
+        { src: "/assets/gallery/rommel-2.jpg", alt: "Rommel" },
+      ]}
+    />
+  </Section>
+</BaseLayout>

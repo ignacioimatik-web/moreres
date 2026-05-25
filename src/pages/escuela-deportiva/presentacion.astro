@@ -1,0 +1,74 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Stats from "@/components/Stats.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Presentación | Escuela Deportiva Moreres",
+  description: "La Escuela Deportiva del C.D. Moreres, fundada en 1996 y relanzada en 2015."
+}
+const breadcrumbs = getBreadcrumbs("/escuela-deportiva/presentacion")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Presentación" subtitle="C.D. Moreres — Escuela Deportiva" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Nuestra escuela" title="Formar personas a través del deporte">
+    <div class="content-block">
+      <p class="content-block__lead">
+        La Asociación Moreres cuenta con una Escuela Deportiva de fútbol que surgió en 1996 y tuvo
+        su relanzamiento en 2015 con un nuevo proyecto a través de la creación de equipos federados
+        que fueron emigrando de fútbol sala a fútbol.
+      </p>
+      <p class="content-block__text">
+        El C.D. Moreres tiene el objetivo de formar personas a través del deporte. El fútbol es una
+        herramienta muy eficaz para trabajar una serie de valores y virtudes humanas que les sirva
+        para su crecimiento personal.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="primary" center>
+    <Stats
+      items={[
+        { number: "1996", label: "Fundación" },
+        { number: "11", label: "Equipos" },
+        { number: "185+", label: "Jugadores" },
+        { number: "10", label: "Años relanzamiento" }
+      ]}
+    />
+  </Section>
+
+  <Section tagline="Filosofía" title="Más que fútbol">
+    <div class="content-block">
+      <p class="content-block__text">
+        A través del trabajo temporada tras temporada, el Club busca mejorar y superarse cada año
+        tratando de ser reconocido haciéndose un nombre entre los clubes de la provincia de Castellón.
+        En la temporada 2024-2025, con motivo del 10º aniversario del relanzamiento, estrenamos
+        escudo y marca deportiva S10, con diseños exclusivos de ropa.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__lead {
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+    margin-top: var(--spacing-4);
+  }
+</style>

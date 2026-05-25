@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Gallery from "@/components/Gallery.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Curso 2022-2023 | Galería Moreres",
+  description: "Imágenes de actividades del curso 2022-2023."
+}
+const breadcrumbs = getBreadcrumbs("/galeria/curso-2022-2023")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Curso 2022-2023" subtitle="Galería de imágenes" breadcrumbs={breadcrumbs} />
+
+  <Section>
+    <Gallery
+      images={[
+        { src: "/assets/gallery/cartel-2022-2023.png", alt: "Cartel del curso 2022-2023" },
+        { src: "/assets/gallery/cena-de-navidad-1.jpg", alt: "Cena de Navidad" },
+        { src: "/assets/gallery/cena-de-navidad-3.jpg", alt: "Cena de Navidad" },
+        { src: "/assets/gallery/operaci-n-cobra-2023-1-eso.jpg", alt: "Operación Cobra 2023" },
+        { src: "/assets/gallery/operaci-n-cobra-2023-2-eso.jpg", alt: "Operación Cobra 2023" },
+        { src: "/assets/gallery/operaci-n-cobra-2023-6.jpg", alt: "Operación Cobra 2023" },
+        { src: "/assets/gallery/operaci-n-cobra-2023.jpg", alt: "Operación Cobra 2023" },
+        { src: "/assets/gallery/enero-1-2023.png", alt: "Enero 2023" },
+      ]}
+    />
+  </Section>
+</BaseLayout>

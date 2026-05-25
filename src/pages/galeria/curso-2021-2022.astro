@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Gallery from "@/components/Gallery.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Curso 2021-2022 | Galería Moreres",
+  description: "Imágenes de actividades del curso 2021-2022."
+}
+const breadcrumbs = getBreadcrumbs("/galeria/curso-2021-2022")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Curso 2021-2022" subtitle="Galería de imágenes" breadcrumbs={breadcrumbs} />
+
+  <Section>
+    <Gallery
+      images={[
+        { src: "/assets/gallery/abril-1-2022.png", alt: "Abril 2022" },
+        { src: "/assets/gallery/mayo-1.png", alt: "Mayo" },
+        { src: "/assets/gallery/marzo-1-2022.png", alt: "Marzo 2022" },
+        { src: "/assets/gallery/eso-alicante.jpg", alt: "ESO Alicante" },
+        { src: "/assets/gallery/eso-valencia.jpg", alt: "ESO Valencia" },
+        { src: "/assets/gallery/campus-de-navidad_orig.jpeg", alt: "Campus de Navidad" },
+        { src: "/assets/gallery/campeones_orig.jpeg", alt: "Campeones" },
+      ]}
+    />
+  </Section>
+</BaseLayout>

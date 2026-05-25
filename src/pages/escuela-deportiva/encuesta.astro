@@ -1,0 +1,91 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+import { pages } from "@data/seo"
+
+const route = pages["/escuela-deportiva/encuesta"]
+const breadcrumbs = getBreadcrumbs("/escuela-deportiva/encuesta")
+---
+
+<BaseLayout title={route.title} description={route.description} robots={route.robots} breadcrumbs={breadcrumbs}>
+  <PageHeader title="Encuesta" subtitle="Ayúdanos a mejorar" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Opinión" title="Encuesta anónima">
+    <form class="encuesta-form" action="https://formsubmit.co/asociacionmoreres@gmail.com" method="POST">
+      <input type="hidden" name="_next" value="https://asociacionmoreres.org/escuela-deportiva/encuesta" />
+      <input type="hidden" name="_subject" value="Encuesta Escuela Deportiva" />
+
+      <div class="form-group">
+        <label class="form-label">Valoración general de la Escuela Deportiva</label>
+        <div class="rating-group">
+          {[1, 2, 3, 4, 5].map((n) => (
+            <label class="rating-label">
+              <input type="radio" name="valoracion" value={n} required />
+              <span>{n}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="positives" class="form-label">¿Qué es lo que más te gusta?</label>
+        <textarea id="positives" name="positives" class="form-textarea" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="improvements" class="form-label">¿Qué mejorarías?</label>
+        <textarea id="improvements" name="improvements" class="form-textarea" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--lg btn--full">
+        Enviar encuesta
+      </button>
+    </form>
+  </Section>
+</BaseLayout>
+
+<style>
+  .encuesta-form {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .rating-group {
+    display: flex;
+    gap: var(--spacing-3);
+    margin-top: var(--spacing-2);
+  }
+
+  .rating-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-1);
+    cursor: pointer;
+  }
+
+  .rating-label span {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--color-neutral-200);
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-bold);
+    color: var(--text-secondary);
+    transition: all var(--duration-fast) var(--easing-default);
+  }
+
+  .rating-label input:checked + span {
+    background: var(--color-primary-500);
+    border-color: var(--color-primary-500);
+    color: var(--text-inverse);
+  }
+
+  .rating-label:hover span {
+    border-color: var(--color-primary-300);
+  }
+</style>

@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Actividades formativas | Asociación Moreres",
+  description: "Formación humana, académica y espiritual. Programas The Link y The Mark."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/formativas")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Actividades formativas" subtitle="Formación para todas las edades" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="Formación continua" title="Charlas y programas">
+    <div class="content-block">
+      <p class="content-block__text">
+        Se ofrecen charlas de formación humana y cristiana para todas las edades y un acompañamiento
+        personal a través de un intensivo programa de coaching personal.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light">
+    <div class="features">
+      <article class="feature">
+        <div class="feature__number">01</div>
+        <h3 class="feature__title">Formación humana</h3>
+        <p class="feature__text">Programa de virtudes para favorecer un desarrollo pleno y armónico de la personalidad.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__number">02</div>
+        <h3 class="feature__title">Formación académica</h3>
+        <p class="feature__text">Acompañamiento en el estudio y enriquecimiento cultural: literatura, cine, conferencias y visitas culturales.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__number">03</div>
+        <h3 class="feature__title">Formación espiritual</h3>
+        <p class="feature__text">Charlas y conversaciones semanales para la dimensión espiritual de cada socio.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__number">04</div>
+        <h3 class="feature__title">The Link</h3>
+        <p class="feature__text">Programa de formación afectivo-sexual para 1º y 2º de ESO con sesiones mensuales y mentoría.</p>
+      </article>
+      <article class="feature">
+        <div class="feature__number">05</div>
+        <h3 class="feature__title">The Mark</h3>
+        <p class="feature__text">Programa de formación en el carácter para 3º y 4º de ESO con ponentes y mentoría personal.</p>
+      </article>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+export interface Props {
+  title: string
+  subtitle?: string
+  tagline?: string
+  backgroundImage: string
+  ctaPrimary?: { label: string; href: string }
+  ctaSecondary?: { label: string; href: string }
+}
+
+const { title, subtitle, tagline, backgroundImage, ctaPrimary, ctaSecondary } = Astro.props
+---
+
+<section class="hero" aria-label="Hero">
+  <div class="hero__background">
+    <img src={backgroundImage} alt="" aria-hidden="true" loading="eager" decoding="async" />
+  </div>
+  <div class="hero__overlay" />
+  <div class="hero__content">
+    {tagline && <span class="hero__tagline">{tagline}</span>}
+    <h1 class="hero__title">{title}</h1>
+    {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+    {(ctaPrimary || ctaSecondary) && (
+      <div class="hero__actions">
+        {ctaPrimary && (
+          <a href={ctaPrimary.href} class="btn btn--primary btn--lg">
+            {ctaPrimary.label}
+          </a>
+        )}
+        {ctaSecondary && (
+          <a href={ctaSecondary.href} class="btn btn--secondary btn--lg">
+            {ctaSecondary.label}
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</section>

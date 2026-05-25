@@ -1,0 +1,75 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Historia | Asociación Moreres",
+  description: "Conoce nuestra historia desde 1971 en Castellón."
+}
+const breadcrumbs = getBreadcrumbs("/quienes-somos/historia")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader title="Historia" subtitle="Más de 50 años formando jóvenes en Castellón" breadcrumbs={breadcrumbs} />
+
+  <Section tagline="1971" title="Nuestros orígenes" center>
+    <div class="content-block">
+      <p class="content-block__text">
+        La Asociación Moreres fue fundada en Castellón de la Plana en el año 1971. Desde sus inicios,
+        ha mantenido un firme compromiso con la juventud y las familias de la ciudad, ofreciendo un
+        espacio de encuentro, formación y amistad.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light">
+    <div class="timeline">
+      <div class="timeline__item">
+        <div class="timeline__year">1971</div>
+        <p>Fundación de la Asociación Moreres en Castellón.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__year">1996</div>
+        <p>Creación de la Escuela Deportiva de fútbol.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__year">2015</div>
+        <p>Relanzamiento de la Escuela Deportiva con un nuevo proyecto federado.</p>
+      </div>
+      <div class="timeline__item">
+        <div class="timeline__year">2024-2025</div>
+        <p>10º aniversario del relanzamiento. 11 equipos, 185+ jugadores y nuevo escudo.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section tagline="Actualidad" title="Moreres hoy">
+    <div class="content-block">
+      <p class="content-block__text">
+        Hoy Moreres sigue siendo un referente en la formación juvenil en Castellón, con actividades
+        que abarcan desde el estudio y la formación humana hasta el deporte y la solidaridad,
+        siempre con el mismo espíritu de sus orígenes.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+
+  .timeline {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+</style>

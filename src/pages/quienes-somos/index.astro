@@ -1,0 +1,91 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import Card from "@/components/Card.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Quiénes somos | Asociación Moreres",
+  description: "Conoce la Asociación Moreres: un proyecto educativo que ayuda a los padres en la formación de sus hijos."
+}
+const breadcrumbs = getBreadcrumbs("/quienes-somos")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader
+    title="Quiénes somos"
+    subtitle="Conoce nuestra asociación, nuestra historia y nuestro proyecto educativo"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <Section tagline="Nuestra identidad" title="Somos Moreres" center>
+    <div class="content-block">
+      <p class="content-block__lead">
+        Un proyecto educativo que quiere ayudar a los padres en la formación de sus hijos.
+        Ofrecemos un conjunto de actividades en las que, en un ambiente de trabajo, amistad
+        y confianza, se lo pasen bien a la vez que mejoren como personas.
+      </p>
+    </div>
+  </Section>
+
+  <Section variant="light">
+    <div class="cards-grid animate-stagger">
+      <Card
+        image={{ src: "/assets/images/cobra-1_orig.jpg", alt: "Qué es Moreres" }}
+        title="Qué es Moreres"
+        text="Así lo hemos llamado desde el principio: el Club. Y nos gusta ese nombre, porque Moreres, antes de un centro educativo, es un modo de convivir, de pasarlo bien, de tener amigos."
+        href="/quienes-somos/que-es-moreres"
+      />
+      <Card
+        image={{ src: "/assets/images/10-aniversario-escudo.png", alt: "Historia de Moreres" }}
+        title="Historia"
+        text="La Asociación Moreres fue fundada en Castellón en 1971. Desde entonces, ha mantenido un firme compromiso con la juventud y las familias."
+        href="/quienes-somos/historia"
+      />
+      <Card
+        image={{ src: "/assets/images/rafa-lafuente-1_orig.jpg", alt: "Rafa Lafuente - sesión afectividad" }}
+        title="Proyecto educativo"
+        text="Formación humana, académica, espiritual y coaching personal. Programas The Link y The Mark para adolescentes."
+        href="/quienes-somos/proyecto-educativo"
+      />
+      <Card
+        image={{ src: "/assets/images/univ_orig.png", alt: "UNIV Roma" }}
+        title="Formación cristiana"
+        text="Charlas de formación cristiana, meditaciones semanales y cursos de retiro con la colaboración de la Prelatura del Opus Dei."
+        href="/quienes-somos/formacion-cristiana"
+      />
+    </div>
+  </Section>
+
+  <Section tagline="Filosofía" title="Nuestra razón de ser" center>
+    <div class="content-block">
+      <p class="content-block__text">
+        Moreres, desde sus orígenes, ha querido reivindicar la idea de que ser buen cristiano
+        y tratar a Dios no está reñido ni con el fútbol, ni con tener muy buenos amigos, ni con
+        estudiar mucho y bien, ni con amar con pasión la libertad de cada uno, ni con dedicar su
+        tiempo a aquellos que han gozado de menos oportunidades.
+      </p>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .content-block {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content-block__lead {
+    font-size: var(--text-xl);
+    line-height: var(--leading-relaxed);
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .content-block__text {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
+</style>

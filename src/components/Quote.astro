@@ -1,0 +1,13 @@
+---
+export interface Props {
+  text: string
+  author: string
+}
+
+const { text, author } = Astro.props
+---
+
+<blockquote class="quote">
+  <p class="quote__text">&ldquo;{text}&rdquo;</p>
+  <footer class="quote__author">&mdash; {author}</footer>
+</blockquote>

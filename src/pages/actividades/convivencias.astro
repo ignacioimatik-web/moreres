@@ -1,0 +1,160 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHeader from "@/components/PageHeader.astro"
+import Section from "@/components/Section.astro"
+import { getBreadcrumbs } from "@data/navigation"
+
+const route = {
+  title: "Convivencias | Asociación Moreres",
+  description: "Convivencias de Semana Santa, Pascua y verano: UNIV Roma, MIF Fátima, Manager, Interclubes."
+}
+const breadcrumbs = getBreadcrumbs("/actividades/convivencias")
+---
+
+<BaseLayout title={route.title} description={route.description}>
+  <PageHeader
+    title="Convivencias"
+    subtitle="Las actividades que más apasionan a nuestros jóvenes"
+    breadcrumbs={breadcrumbs}
+  />
+
+  <Section tagline="Semana Santa y Pascua" title="Convivencias de primavera">
+    <div class="convivencias-list">
+      <article class="convivencia-card">
+        <img src="/assets/images/univ_orig.png" alt="UNIV Roma" class="convivencia-card__image" />
+        <div class="convivencia-card__body">
+          <h3 class="convivencia-card__title">UNIV — Roma</h3>
+          <p class="convivencia-card__meta">A partir de 2º Bachillerato</p>
+          <p class="convivencia-card__text">
+            Experiencia internacional donde jóvenes de todo el mundo buscan profundizar en su fe y
+            dar sentido a su trabajo. Entre las actividades destaca el encuentro con el Papa Francisco.
+          </p>
+        </div>
+      </article>
+
+      <article class="convivencia-card">
+        <img src="/assets/images/mif-f-tima-2023_orig.jpeg" alt="MIF Fátima" class="convivencia-card__image" />
+        <div class="convivencia-card__body">
+          <h3 class="convivencia-card__title">MIF — Fátima (Portugal)</h3>
+          <p class="convivencia-card__meta">Desde 3º ESO hasta 1º Bachillerato</p>
+          <p class="convivencia-card__text">
+            Más de 1.500 personas se juntan para disfrutar de la Semana Santa con torneo de fútbol
+            y otras actividades deportivas y culturales entre clubes de toda España.
+          </p>
+        </div>
+      </article>
+
+      <article class="convivencia-card">
+        <img src="/assets/images/supercopa-2023_orig.jpeg" alt="Supercopa Junior" class="convivencia-card__image" />
+        <div class="convivencia-card__body">
+          <h3 class="convivencia-card__title">Supercopa Junior de Clubes</h3>
+          <p class="convivencia-card__meta">1º y 2º ESO — Torreciudad (Huesca)</p>
+          <p class="convivencia-card__text">
+            Semana espectacular con competiciones deportivas, formación y diversión. Participan clubes
+            de Aragón, Comunidad Valenciana, Murcia y Palma de Mallorca.
+          </p>
+        </div>
+      </article>
+    </div>
+  </Section>
+
+  <Section tagline="Verano" title="Convivencias de verano" variant="light">
+    <div class="convivencias-list">
+      <article class="convivencia-card">
+        <div class="convivencia-card__body">
+          <h3 class="convivencia-card__title">Camino de Santiago</h3>
+          <p class="convivencia-card__meta">1º ESO · Sarria — Santiago</p>
+          <p class="convivencia-card__text">
+            Una experiencia única de convivencia y superación personal recorriendo el Camino.
+          </p>
+        </div>
+      </article>
+
+      <article class="convivencia-card">
+        <div class="convivencia-card__body">
+          <h3 class="convivencia-card__title">Manager</h3>
+          <p class="convivencia-card__meta">4º ESO y 1º Bachillerato · Torreciudad / Valencia</p>
+          <p class="convivencia-card__text">
+            Programa de liderazgo y formación para los cursos más altos.
+          </p>
+        </div>
+      </article>
+
+      <article class="convivencia-card">
+        <div class="convivencia-card__body">
+          <h3 class="convivencia-card__title">Interclubes</h3>
+          <p class="convivencia-card__meta">2º ESO a 1º Bachillerato · Torreciudad</p>
+          <p class="convivencia-card__text">
+            Encuentro deportivo y formativo entre clubes de toda España.
+          </p>
+        </div>
+      </article>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .convivencias-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-6);
+  }
+
+  .convivencia-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-white);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-neutral-100);
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--easing-default);
+  }
+
+  .convivencia-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .convivencia-card__image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  .convivencia-card__body {
+    padding: var(--spacing-5);
+  }
+
+  .convivencia-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--spacing-1);
+    color: var(--text-primary);
+  }
+
+  .convivencia-card__meta {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary-500);
+    margin-bottom: var(--spacing-3);
+  }
+
+  .convivencia-card__text {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (min-width: 768px) {
+    .convivencia-card {
+      flex-direction: row;
+    }
+
+    .convivencia-card__image {
+      width: 280px;
+      aspect-ratio: auto;
+      flex-shrink: 0;
+    }
+  }
+</style>

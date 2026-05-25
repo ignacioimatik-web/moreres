@@ -1,0 +1,230 @@
+---
+export interface GalleryImage {
+  src: string
+  alt: string
+  featured?: boolean
+}
+
+export interface Props {
+  images: GalleryImage[]
+  columns?: 3 | 4
+}
+
+const { images, columns = 4 } = Astro.props
+const galleryId = `gallery-${Math.random().toString(36).slice(2, 8)}`
+---
+
+<div class:list={["gallery", columns === 3 && "gallery--3"]} id={galleryId} role="list" aria-label="Galería de imágenes">
+  {images.map((img, i) => (
+    <div
+      class:list={["gallery__item", img.featured && "gallery__item--featured"]}
+      role="listitem"
+      data-index={i}
+    >
+      <img src={img.src} alt={img.alt} loading="lazy" decoding="async" />
+      <div class="gallery__overlay">
+        <span class="gallery__label">{img.alt}</span>
+      </div>
+    </div>
+  ))}
+</div>
+
+<div class="lightbox" id={`${galleryId}-lb`} role="dialog" aria-label="Visor de imágenes">
+  <div class="lightbox__backdrop" />
+  <button class="lightbox__close" aria-label="Cerrar">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox__prev" aria-label="Anterior">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="lightbox__next" aria-label="Siguiente">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lightbox__content">
+    <img class="lightbox__image" alt="" />
+    <div class="lightbox__caption" />
+    <div class="lightbox__counter" />
+  </div>
+</div>
+
+<script>
+  (() => {
+    const gallery = document.getElementById("{galleryId}")
+    const lightbox = document.getElementById("{galleryId}-lb")
+    if (!gallery || !lightbox) return
+
+    const items = [...gallery.querySelectorAll(".gallery__item")]
+    const images = items.map((el) => ({
+      src: el.querySelector("img").src,
+      alt: el.querySelector("img").alt,
+    }))
+
+    const lbImg = lightbox.querySelector(".lightbox__image")
+    const lbCaption = lightbox.querySelector(".lightbox__caption")
+    const lbCounter = lightbox.querySelector(".lightbox__counter")
+    const lbClose = lightbox.querySelector(".lightbox__close")
+    const lbPrev = lightbox.querySelector(".lightbox__prev")
+    const lbNext = lightbox.querySelector(".lightbox__next")
+    const lbBackdrop = lightbox.querySelector(".lightbox__backdrop")
+
+    let currentIndex = -1
+
+    function open(index) {
+      currentIndex = index
+      const img = images[index]
+      lbImg.src = img.src
+      lbImg.alt = img.alt
+      lbCaption.textContent = img.alt
+      lbCounter.textContent = `${index + 1} / ${images.length}`
+      lightbox.classList.add("lightbox--open")
+      document.body.style.overflow = "hidden"
+    }
+
+    function close() {
+      lightbox.classList.remove("lightbox--open")
+      document.body.style.overflow = ""
+      currentIndex = -1
+    }
+
+    function prev() {
+      if (currentIndex > 0) open(currentIndex - 1)
+    }
+
+    function next() {
+      if (currentIndex < images.length - 1) open(currentIndex + 1)
+    }
+
+    items.forEach((el, i) => {
+      el.addEventListener("click", () => open(i))
+      el.setAttribute("tabindex", "0")
+      el.setAttribute("role", "button")
+    })
+
+    lbClose.addEventListener("click", close)
+    lbBackdrop.addEventListener("click", close)
+    lbPrev.addEventListener("click", prev)
+    lbNext.addEventListener("click", next)
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("lightbox--open")) return
+      if (e.key === "Escape") close()
+      if (e.key === "ArrowLeft") prev()
+      if (e.key === "ArrowRight") next()
+    })
+  })()
+</script>
+
+<style>
+  .gallery--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 640px) {
+    .gallery--3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--duration-normal) var(--easing-default), visibility var(--duration-normal) var(--easing-default);
+  }
+
+  .lightbox--open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--text-inverse);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--easing-default);
+  }
+
+  .lightbox__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .lightbox__prev,
+  .lightbox__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--text-inverse);
+    cursor: pointer;
+    transition: background var(--duration-fast) var(--easing-default);
+  }
+
+  .lightbox__prev { left: var(--spacing-4); }
+  .lightbox__next { right: var(--spacing-4); }
+
+  .lightbox__prev:hover,
+  .lightbox__next:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .lightbox__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+
+  .lightbox__image {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .lightbox__caption {
+    margin-top: var(--spacing-4);
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+  }
+
+  .lightbox__counter {
+    margin-top: var(--spacing-2);
+    font-size: var(--text-xs);
+    color: rgba(255, 255, 255, 0.4);
+  }
+</style>
