@@ -15,7 +15,7 @@ function isActive(href: string): boolean {
       <img src="/assets/logos/moreres-logo-morera-letras.png" alt="ASOCIACIÓN MORERES" width="40" height="40" />
     </a>
 
-    <nav class="nav nav--always" aria-label="Navegación principal">
+    <nav class="nav" aria-label="Navegación principal">
       <ul class="nav__list">
         {
           navigation.map((item) => (
@@ -53,11 +53,49 @@ function isActive(href: string): boolean {
         }
       </ul>
     </nav>
+
+    <button class="nav-toggle" type="button" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <svg class="nav-toggle__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Navegación móvil">
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__header">
+        <span>Menú</span>
+        <button class="mobile-menu__close" id="mobileMenuClose" type="button" aria-label="Cerrar menú">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+      <ul class="mobile-menu__list">
+        {
+          navigation.map((item) => (
+            <li class="mobile-menu__item">
+              <a href={item.href} class="mobile-menu__link" data-mobile-link>{item.label}</a>
+              {item.children && (
+                <ul class="mobile-menu__sublist">
+                  {item.children.map((child) => (
+                    <li><a href={child.href} class="mobile-menu__sublink" data-mobile-link>{child.label}</a></li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <button class="mobile-menu__overlay" type="button" id="mobileMenuOverlay" aria-label="Cerrar menú"></button>
   </div>
 </header>
 
 <script>
   const header = document.getElementById("header")
+  const navToggle = document.getElementById("navToggle")
+  const mobileMenu = document.getElementById("mobileMenu")
+  const mobileMenuClose = document.getElementById("mobileMenuClose")
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay")
+  const mobileLinks = document.querySelectorAll("[data-mobile-link]")
+  let mobileOpen = false
 
   const handleScroll = () => {
     if (window.scrollY > 50) {
@@ -72,6 +110,13 @@ function isActive(href: string): boolean {
     document.querySelectorAll(".nav__item--open").forEach((el) => {
       el.classList.remove("nav__item--open")
     })
+  }
+
+  const setMobileMenu = (open) => {
+    mobileOpen = open
+    mobileMenu?.classList.toggle("is-open", open)
+    navToggle?.setAttribute("aria-expanded", String(open))
+    document.documentElement.classList.toggle("mobile-menu-open", open)
   }
 
   const positionDropdown = (dropdown, link) => {
@@ -106,6 +151,18 @@ function isActive(href: string): boolean {
     if (!e.target || !(e.target instanceof Element)) return
     if (!e.target.closest(".nav__item")) {
       closeAllDropdowns()
+    }
+  })
+
+  navToggle?.addEventListener("click", () => setMobileMenu(!mobileOpen))
+  mobileMenuClose?.addEventListener("click", () => setMobileMenu(false))
+  mobileMenuOverlay?.addEventListener("click", () => setMobileMenu(false))
+  mobileLinks.forEach((link) => link.addEventListener("click", () => setMobileMenu(false)))
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeAllDropdowns()
+      setMobileMenu(false)
     }
   })
 
