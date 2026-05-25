@@ -65,6 +65,22 @@ function isActive(href: string): boolean {
     } else {
       header?.classList.remove("header--scrolled")
     }
+    closeAllDropdowns()
+  }
+
+  const closeAllDropdowns = () => {
+    document.querySelectorAll(".nav__item--open").forEach((el) => {
+      el.classList.remove("nav__item--open")
+    })
+  }
+
+  const positionDropdown = (dropdown, link) => {
+    const rect = link.getBoundingClientRect()
+    dropdown.style.position = "fixed"
+    dropdown.style.top = rect.bottom + "px"
+    dropdown.style.left = rect.left + rect.width / 2 + "px"
+    dropdown.style.transform = "translateX(-50%)"
+    dropdown.style.marginTop = "0"
   }
 
   window.addEventListener("scroll", handleScroll, { passive: true })
@@ -76,11 +92,11 @@ function isActive(href: string): boolean {
       const hasChildren = parent.querySelector(".nav__dropdown")
       if (!hasChildren) return
       const alreadyOpen = parent.classList.contains("nav__item--open")
-      document.querySelectorAll(".nav__item--open").forEach((el) => {
-        el.classList.remove("nav__item--open")
-      })
+      closeAllDropdowns()
       if (!alreadyOpen) {
         parent.classList.add("nav__item--open")
+        const dropdown = parent.querySelector(".nav__dropdown")
+        if (dropdown) positionDropdown(dropdown, link)
         e.preventDefault()
       }
     })
@@ -89,9 +105,9 @@ function isActive(href: string): boolean {
   document.addEventListener("click", (e) => {
     if (!e.target || !(e.target instanceof Element)) return
     if (!e.target.closest(".nav__item")) {
-      document.querySelectorAll(".nav__item--open").forEach((el) => {
-        el.classList.remove("nav__item--open")
-      })
+      closeAllDropdowns()
     }
   })
+
+  window.addEventListener("resize", closeAllDropdowns)
 </script>
