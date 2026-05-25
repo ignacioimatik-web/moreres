@@ -15,6 +15,14 @@ function isActive(href: string): boolean {
       <img src="/assets/logos/moreres-logo-morera-letras.png" alt="ASOCIACIÓN MORERES" width="40" height="40" />
     </a>
 
+    <button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false">
+      <svg class="nav-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+
     <nav class="nav" aria-label="Navegación principal">
       <ul class="nav__list">
         {
@@ -53,12 +61,44 @@ function isActive(href: string): boolean {
         }
       </ul>
     </nav>
+  </div>
 
+  <div class="nav-overlay" id="navOverlay">
+    <ul class="nav-overlay__list">
+      {
+        navigation.map((item) => (
+          <li class="nav-overlay__item">
+            <a
+              href={item.href}
+              class:list={["nav-overlay__link", { "nav-overlay__link--highlighted": item.isHighlighted }]}
+              data-overlay-link
+            >
+              {item.label}
+            </a>
+            {item.children && (
+              <ul class="nav-overlay__sublist">
+                {item.children.map((child) => (
+                  <li>
+                    <a href={child.href} class="nav-overlay__sublink" data-overlay-link>
+                      {child.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </header>
 
 <script>
   const header = document.getElementById("header")
+  const navToggle = document.getElementById("navToggle")
+  const navOverlay = document.getElementById("navOverlay")
+  const overlayLinks = document.querySelectorAll("[data-overlay-link]")
+  let isOpen = false
 
   const handleScroll = () => {
     if (window.scrollY > 50) {
@@ -68,7 +108,20 @@ function isActive(href: string): boolean {
     }
   }
 
+  const toggleOverlay = () => {
+    isOpen = !isOpen
+    navOverlay?.classList.toggle("nav-overlay--open")
+    navToggle?.setAttribute("aria-expanded", String(isOpen))
+    document.body.style.overflow = isOpen ? "hidden" : ""
+  }
+
   window.addEventListener("scroll", handleScroll, { passive: true })
+  navToggle?.addEventListener("click", toggleOverlay)
+  overlayLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (isOpen) toggleOverlay()
+    })
+  })
 
   document.querySelectorAll(".nav__item > a").forEach((link) => {
     link.addEventListener("click", (e) => {
@@ -76,12 +129,11 @@ function isActive(href: string): boolean {
       if (!parent) return
       const hasChildren = parent.querySelector(".nav__dropdown")
       if (!hasChildren) return
-
-      const isOpen = parent.classList.contains("nav__item--open")
+      const alreadyOpen = parent.classList.contains("nav__item--open")
       document.querySelectorAll(".nav__item--open").forEach((el) => {
         el.classList.remove("nav__item--open")
       })
-      if (!isOpen) {
+      if (!alreadyOpen) {
         parent.classList.add("nav__item--open")
         e.preventDefault()
       }
